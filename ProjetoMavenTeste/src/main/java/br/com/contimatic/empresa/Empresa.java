@@ -2,10 +2,132 @@ package br.com.contimatic.empresa;
 
 public class Empresa {
 
-	private int cnpj;
+	private String cnpj;
+	private String razaoSocial;
 	private String endereco;
 	private String telefone;
 	private String dono;
+	private String email;
+	private String inscricaoEstadual;
+
 	
+
+	public String getCnpj() {
+		return cnpj;
+	}
+
+	public boolean setCnpj(String cnpj) {
+		if (cnpj.length() < 14 && cnpj.length() > 14) {
+			System.out.println("Cnpj errado");
+			return false;
+		} else {
+			this.cnpj = cnpj;
+			return true;
+		}
+
+	}
+
+	public String getRazaoSocial() {
+		return razaoSocial;
+	}
+
+	public boolean setRazaoSocial(String razaoSocial) {
+		if (razaoSocial.isEmpty()) {
+			System.out.println("Nome invalido");
+			return false;
+		} else {
+			this.razaoSocial = razaoSocial;
+			return true;
+		}
+
+	}
+
+	public String getEndereco() {
+		return endereco;
+	}
+
+	public boolean setEndereco(String endereco) {
+		if (endereco.isEmpty()) {
+			System.out.println("Endereço invalido");
+			return false;
+		} else {
+			this.endereco = endereco;
+			return true;
+		}
+
+	}
+
+	public String getTelefone() {
+		return telefone;
+	}
+
+	public boolean setTelefone(String telefone) {
+		if (telefone.length() < 8 || telefone.length() > 9) {
+			System.out.println("Telefone errado");
+			return false;
+		} else {
+			this.telefone = telefone;
+			return true;
+		}
+	}
+
+	public String getDono() {
+		return dono;
+	}
+
+	public boolean setDono(String dono) {
+		if (dono.isEmpty()) {
+			System.out.println("Nome invalido");
+			return false;
+		} else {
+
+			this.dono = dono;
+			return true;
+		}
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public boolean setEmail(String email) {
+		if (email.isEmpty()) {
+			System.out.println("Email invalido");
+			return false;
+		} else {
+			this.email = email;
+			return true;
+		}
+
+	}
+
+	public String getInscricaoEstadual() {
+		return inscricaoEstadual;
+	}
+
+	public boolean setInscricaoEstadual(String inscricaoEstadual) {
+		if (inscricaoEstadual.length() < 13 && inscricaoEstadual.length() > 13) {
+			System.out.println("Inscrição invalida");
+			return false;
+		} else {
+			this.inscricaoEstadual = inscricaoEstadual;
+			return true;
+		}
+	}
+
+	@Override
+	public String toString() {
+		return cnpj + "(" + razaoSocial + "\n" + endereco + "\n" + email + "\n" + razaoSocial + "\n" + inscricaoEstadual
+				+ "\n" + telefone + "\n" + dono + ")";
+	}
+
 	
+	public static void main(String[] args) {
+		Empresa p = new Empresa();
+		p.setCnpj("12345678912345");
+		System.out.println(p);
+		
+	}
+
+
 }
