@@ -12,15 +12,26 @@ public class Empresa {
 
 	
 
+	public Empresa() {
+		this.cnpj=null;
+		this.razaoSocial=null;
+		this.endereco=null;
+		this.telefone=null;
+		this.dono=null;
+		this.email=null;
+		this.inscricaoEstadual=null;
+	}
+
 	public String getCnpj() {
 		return cnpj;
 	}
 
 	public boolean setCnpj(String cnpj) {
-		if (cnpj.length() < 14 && cnpj.length() > 14) {
-			System.out.println("Cnpj errado");
+		if (cnpj.length() < 14 || cnpj.length() > 14) {
+			System.out.println("Cnpj invalido");
 			return false;
 		} else {
+			
 			this.cnpj = cnpj;
 			return true;
 		}
@@ -33,7 +44,7 @@ public class Empresa {
 
 	public boolean setRazaoSocial(String razaoSocial) {
 		if (razaoSocial.isEmpty()) {
-			System.out.println("Nome invalido");
+			this.razaoSocial="Campo vazio, por favor adcione";
 			return false;
 		} else {
 			this.razaoSocial = razaoSocial;
@@ -122,12 +133,6 @@ public class Empresa {
 	}
 
 	
-	public static void main(String[] args) {
-		Empresa p = new Empresa();
-		p.setCnpj("12345678912345");
-		System.out.println(p);
-		
-	}
-
+	
 
 }

@@ -16,8 +16,8 @@ public class Teste {
 	@Test(timeout = 10)
 	public void setCnpj() {
 		Empresa empresa = new Empresa();
-		boolean cnpj = empresa.setCnpj("12345678901234");
-		Assert.assertEquals(true, cnpj);
+		boolean cnpj = empresa.setCnpj("12");
+		Assert.assertEquals(false, cnpj);
 		
 	}
 
