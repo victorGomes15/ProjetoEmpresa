@@ -41,5 +41,12 @@ public class ListaEmpresa {
 		return saida;
 
 	}
+	
+	
+	@Override
+	public String toString() {
+	
+		return super.toString();
+	}
 
 }

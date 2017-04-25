@@ -1,5 +1,7 @@
 package br.com.contimatic.empresa;
 
+import javax.management.RuntimeErrorException;
+
 public class Empresa {
 
 	private String cnpj;
@@ -10,30 +12,25 @@ public class Empresa {
 	private String email;
 	private String inscricaoEstadual;
 
-	
-
 	public Empresa() {
-		this.cnpj=null;
-		this.razaoSocial=null;
-		this.endereco=null;
-		this.telefone=null;
-		this.dono=null;
-		this.email=null;
-		this.inscricaoEstadual=null;
+		this.cnpj = null;
+		this.razaoSocial = null;
+		this.endereco = null;
+		this.telefone = null;
+		this.dono = null;
+		this.email = null;
+		this.inscricaoEstadual = null;
 	}
 
 	public String getCnpj() {
 		return cnpj;
 	}
 
-	public boolean setCnpj(String cnpj) {
-		if (cnpj.length() < 14 || cnpj.length() > 14) {
-			System.out.println("Cnpj invalido");
-			return false;
-		} else {
-			
-			this.cnpj = cnpj;
-			return true;
+	public void setCnpj(String cnpj) {
+		if (cnpj != null) {
+			if (cnpj.length() == 14) {
+				this.cnpj = cnpj;
+			}
 		}
 
 	}
@@ -44,7 +41,7 @@ public class Empresa {
 
 	public boolean setRazaoSocial(String razaoSocial) {
 		if (razaoSocial.isEmpty()) {
-			this.razaoSocial="Campo vazio, por favor adcione";
+			this.razaoSocial = "Campo vazio, por favor adcione";
 			return false;
 		} else {
 			this.razaoSocial = razaoSocial;
@@ -131,8 +128,5 @@ public class Empresa {
 		return cnpj + "(" + razaoSocial + "\n" + endereco + "\n" + email + "\n" + razaoSocial + "\n" + inscricaoEstadual
 				+ "\n" + telefone + "\n" + dono + ")";
 	}
-
-	
-	
 
 }
