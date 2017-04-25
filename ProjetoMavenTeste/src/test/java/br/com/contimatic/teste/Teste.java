@@ -51,12 +51,16 @@ public class Teste {
 		Assert.assertNull(empresa.getCnpj());
 	}
 	
-
-
 	@Test
-	public void setEndereco() {
-		boolean endereco = empresa.setEndereco("Rua Olimpio Santos");
-		Assert.assertEquals(true, endereco);
+	public void nao_deve_aceitar_um_endereco_nulo() {
+		empresa.setEndereco(null);
+		Assert.assertNull(empresa.getEndereco());
+	}
+	
+	@Test
+	public void nao_deve_ser_um_endereco_vazio() {
+		empresa.setEndereco("");
+		Assert.assertNull(empresa.getEndereco());
 	}
 
 	@Test(expected = NullPointerException.class)
@@ -65,9 +69,21 @@ public class Teste {
 	}
 
 	@Test
-	public void setTelefone() {
-		boolean tel = empresa.setTelefone("58254952");
-		Assert.assertEquals(true, tel);
+	public void nao_deve_aceitar_um_telefone_nulo() {
+		empresa.setTelefone(null);
+		Assert.assertNull(empresa.getTelefone());
+	}
+	
+	@Test
+	public void telefone_deve_conte_menos_de_8_caracteres() {
+		empresa.setTelefone("1234567");
+		Assert.assertNull(empresa.getTelefone());
+	}
+	
+	@Test
+	public void telefone_nao_deve_conter_mais_de_9_caracteres() {
+		empresa.setTelefone("1234567890");
+		Assert.assertNull(empresa.getTelefone());
 	}
 
 	@Test

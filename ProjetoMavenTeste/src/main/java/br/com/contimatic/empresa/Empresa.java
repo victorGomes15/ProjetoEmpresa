@@ -54,29 +54,25 @@ public class Empresa {
 		return endereco;
 	}
 
-	public boolean setEndereco(String endereco) {
-		if (endereco.isEmpty()) {
-			System.out.println("Endereço invalido");
-			return false;
-		} else {
-			this.endereco = endereco;
-			return true;
+	public void setEndereco(String endereco) {
+		if (endereco != null) {
+			if (!endereco.isEmpty()) {
+				this.endereco = endereco;
+			}
 		}
-
 	}
 
 	public String getTelefone() {
 		return telefone;
 	}
 
-	public boolean setTelefone(String telefone) {
-		if (telefone.length() < 8 || telefone.length() > 9) {
-			System.out.println("Telefone errado");
-			return false;
-		} else {
-			this.telefone = telefone;
-			return true;
+	public void setTelefone(String telefone) {
+		if (telefone != null) {
+			if (telefone.length() >= 8 && telefone.length() <= 9) {
+				this.telefone = telefone;
+			}
 		}
+
 	}
 
 	public String getDono() {
