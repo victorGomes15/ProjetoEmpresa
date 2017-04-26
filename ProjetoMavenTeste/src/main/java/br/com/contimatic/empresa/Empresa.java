@@ -11,6 +11,7 @@ public class Empresa {
 	private String dono;
 	private String email;
 	private String inscricaoEstadual;
+	private String nomeEmpresa;
 
 	public Empresa() {
 		this.cnpj = null;
@@ -29,7 +30,9 @@ public class Empresa {
 	public void setCnpj(String cnpj) {
 		if (cnpj != null) {
 			if (cnpj.length() == 14) {
-				this.cnpj = cnpj;
+				if (cnpj.matches("[0-9]+")) {
+					this.cnpj = cnpj;
+				}
 			}
 		}
 
@@ -42,7 +45,9 @@ public class Empresa {
 	public void setRazaoSocial(String razaoSocial) {
 		if (razaoSocial != null) {
 			if (!razaoSocial.isEmpty()) {
-				this.razaoSocial = razaoSocial;
+				if (razaoSocial.matches("[A-Za-z0-9]")) {
+					this.razaoSocial = razaoSocial;
+				}
 			}
 		}
 	}
@@ -66,10 +71,11 @@ public class Empresa {
 	public void setTelefone(String telefone) {
 		if (telefone != null) {
 			if (telefone.length() >= 8 && telefone.length() <= 9) {
-				this.telefone = telefone;
+				if (telefone.matches("[0-9]+")) {
+					this.telefone = telefone;
+				}
 			}
 		}
-
 	}
 
 	public String getDono() {
@@ -79,7 +85,9 @@ public class Empresa {
 	public void setDono(String dono) {
 		if (dono != null) {
 			if (!dono.isEmpty() && dono.length() > 5) {
-				this.dono = dono;
+				if (!dono.matches("[0-9]+")) {
+					this.dono = dono;
+				}
 			}
 		}
 	}
@@ -97,7 +105,7 @@ public class Empresa {
 						contArroba++;
 					}
 				}
-				if (contArroba == 1 && !(email.charAt(email.length()-1)=='.')) {
+				if (contArroba == 1 && !(email.charAt(email.length() - 1) == '.')) {
 					this.email = email;
 				}
 			}
@@ -111,7 +119,21 @@ public class Empresa {
 	public void setInscricaoEstadual(String inscricaoEstadual) {
 		if (inscricaoEstadual != null) {
 			if (inscricaoEstadual.length() == 13) {
-				this.inscricaoEstadual = inscricaoEstadual;
+				if (inscricaoEstadual.matches("[0-9]+")) {
+					this.inscricaoEstadual = inscricaoEstadual;
+				}
+			}
+		}
+	}
+
+	public String getNomeEmpresa() {
+		return nomeEmpresa;
+	}
+
+	public void setNomeEmpresa(String nomeEmpresa) {
+		if (nomeEmpresa != null) {
+			if (!nomeEmpresa.isEmpty()) {
+				this.nomeEmpresa = nomeEmpresa;
 			}
 		}
 	}
