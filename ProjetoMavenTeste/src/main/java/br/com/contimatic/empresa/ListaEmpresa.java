@@ -6,14 +6,9 @@ public class ListaEmpresa {
 
 	public ArrayList<Empresa> list = new ArrayList<Empresa>();
 
-	public boolean addEmpresa(Empresa e) {
+	public void addEmpresa(Empresa e) {
 		if (e != null) {
 			list.add(e);
-			return true;
-		}
-
-		else {
-			return false;
 		}
 	}
 

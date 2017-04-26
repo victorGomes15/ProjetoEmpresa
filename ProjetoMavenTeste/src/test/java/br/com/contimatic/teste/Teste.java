@@ -237,4 +237,8 @@ public class Teste {
 		Assert.assertNull(empresa.getRazaoSocial());
 	}
 
+	@Test
+	public void deve_printar_o_objeto_de_empresa() {
+		empresa.toString();
+	}
 }

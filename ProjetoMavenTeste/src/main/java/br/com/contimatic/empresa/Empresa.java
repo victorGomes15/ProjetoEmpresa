@@ -145,8 +145,8 @@ public class Empresa {
 
 	@Override
 	public String toString() {
-		return cnpj + "(" + razaoSocial + "\n" + endereco + "\n" + email + "\n" + razaoSocial + "\n" + inscricaoEstadual
-				+ "\n" + telefone + "\n" + dono + ")";
+		return cnpj + "(" + razaoSocial + "\n" + "\n" + nomeEmpresa + endereco + "\n" + email + "\n" + razaoSocial
+				+ "\n" + inscricaoEstadual + "\n" + telefone + "\n" + dono + ")";
 	}
 
 }
