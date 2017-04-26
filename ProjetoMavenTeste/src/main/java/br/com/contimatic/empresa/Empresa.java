@@ -2,14 +2,12 @@ package br.com.contimatic.empresa;
 
 import java.util.StringTokenizer;
 
-import javax.management.RuntimeErrorException;
-
 public class Empresa {
 
 	private String cnpj;
 	private String razaoSocial;
-	private String endereco;
-	private String telefone;
+	private Endereco endereco;
+	private Telefone telefone[];
 	private String dono;
 	private String email;
 	private String inscricaoEstadual;
@@ -54,30 +52,26 @@ public class Empresa {
 		}
 	}
 
-	public String getEndereco() {
+	public Endereco getEndereco() {
 		return endereco;
 	}
 
-	public void setEndereco(String endereco) {
-		if (endereco != null) {
-			if (!endereco.isEmpty()) {
-				this.endereco = endereco;
-			}
-		}
+	public void setEndereco(Endereco endereco) {
+////		if (endereco != null) {
+//			if (!endereco.isEmpty()) {
+//				this.endereco = endereco;
+//			}
+//		}
 	}
 
-	public String getTelefone() {
+
+
+	public Telefone[] getTelefone() {
 		return telefone;
 	}
 
-	public void setTelefone(String telefone) {
-		if (telefone != null) {
-			if (telefone.length() >= 8 && telefone.length() <= 9) {
-				if (telefone.matches("[0-9]+")) {
-					this.telefone = telefone;
-				}
-			}
-		}
+	public void setTelefone(Telefone[] telefone) {
+		this.telefone = telefone;
 	}
 
 	public String getDono() {

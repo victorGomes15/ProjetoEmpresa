@@ -1,8 +1,5 @@
 package br.com.contimatic.teste;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.FixMethodOrder;
@@ -10,10 +7,10 @@ import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
 import br.com.contimatic.empresa.Empresa;
-import jdk.nashorn.internal.ir.annotations.Ignore;
+import br.com.contimatic.empresa.Telefone;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class Teste {
+public class EmpresaTeste {
 
 	private Empresa empresa;
 
@@ -64,52 +61,34 @@ public class Teste {
 		Assert.assertNull(empresa.getEndereco());
 	}
 
-	@Test
-	public void nao_deve_ser_um_endereco_vazio() {
-		empresa.setEndereco("");
-		Assert.assertNull(empresa.getEndereco());
-	}
-
-	@Test(expected = NullPointerException.class)
-	public void getEnderecoTesteNull() {
-		empresa.getEndereco().length();
-	}
-
-	@Test
-	public void nao_deve_aceitar_um_telefone_nulo() {
-		empresa.setTelefone(null);
-		Assert.assertNull(empresa.getTelefone());
-	}
+//	@Test
+//	public void nao_deve_ser_um_endereco_vazio() {
+//		empresa.setEndereco("");
+//		Assert.assertNull(empresa.getEndereco());
+//	}
+//
+//	@Test(expected = NullPointerException.class)
+//	public void getEnderecoTesteNull() {
+//		empresa.getEndereco().length();
+//	}
 
 	@Test
-	public void deve_aceitar_telefone_com_8_ou_9_caracteres() {
-		empresa.setTelefone("123456789");
-		Assert.assertNotNull(empresa.getTelefone());
+	public void deve_aceitar_um_Telefone_valido() {
+		Telefone t = new Telefone();
+		t.setDdd(11);
+		t.setNumero("58254952");
+		t.setTipo("Fixo");
+		
+		Telefone t1 = new Telefone();
+		t1.setDdd(11);
+		t1.setNumero("58254952");
+		t1.setTipo("Fixo");
+		
+		Telefone tArray[]= new Telefone[2]; 
+		
+		empresa.setTelefone(tArray);
 	}
-
-	@Test
-	public void telefone_deve_nao_conte_menos_de_8_caracteres() {
-		empresa.setTelefone("1234567");
-		Assert.assertNull(empresa.getTelefone());
-	}
-
-	@Test
-	public void telefone_nao_deve_conter_mais_de_9_caracteres() {
-		empresa.setTelefone("1234567890");
-		Assert.assertNull(empresa.getTelefone());
-	}
-
-	@Test
-	public void nao_deve_aceitar_um_telefone_vazio() {
-		empresa.setTelefone("");
-		Assert.assertNull(empresa.getTelefone());
-	}
-
-	@Test
-	public void nao_deve_aceitar_um_telefone_com_letras() {
-		empresa.setTelefone("5825495l");
-		Assert.assertNull(empresa.getTelefone());
-	}
+	
 
 	@Test
 	public void nao_deve_aceitar_um_dono_nulo() {
