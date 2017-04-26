@@ -57,14 +57,12 @@ public class Empresa {
 	}
 
 	public void setEndereco(Endereco endereco) {
-////		if (endereco != null) {
-//			if (!endereco.isEmpty()) {
-//				this.endereco = endereco;
-//			}
-//		}
+		//// if (endereco != null) {
+		// if (!endereco.isEmpty()) {
+		// this.endereco = endereco;
+		// }
+		// }
 	}
-
-
 
 	public Telefone[] getTelefone() {
 		return telefone;

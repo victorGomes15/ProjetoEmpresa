@@ -5,8 +5,9 @@ public class Endereco {
 	private String rua;
 	private int numero;
 	private int complemento;
-	private Bairro bairro;
+	private Estado estado;
 	private Cidade cidade;
+	private Bairro bairro;
 
 	public String getRua() {
 		return rua;
