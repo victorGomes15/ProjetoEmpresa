@@ -39,15 +39,12 @@ public class Empresa {
 		return razaoSocial;
 	}
 
-	public boolean setRazaoSocial(String razaoSocial) {
-		if (razaoSocial.isEmpty()) {
-			this.razaoSocial = "Campo vazio, por favor adcione";
-			return false;
-		} else {
-			this.razaoSocial = razaoSocial;
-			return true;
+	public void setRazaoSocial(String razaoSocial) {
+		if (razaoSocial != null) {
+			if (!razaoSocial.isEmpty()) {
+				this.razaoSocial = razaoSocial;
+			}
 		}
-
 	}
 
 	public String getEndereco() {
@@ -79,14 +76,11 @@ public class Empresa {
 		return dono;
 	}
 
-	public boolean setDono(String dono) {
-		if (dono.isEmpty()) {
-			System.out.println("Nome invalido");
-			return false;
-		} else {
-
-			this.dono = dono;
-			return true;
+	public void setDono(String dono) {
+		if (dono != null) {
+			if (!dono.isEmpty() && dono.length() > 5) {
+				this.dono = dono;
+			}
 		}
 	}
 
@@ -94,28 +88,31 @@ public class Empresa {
 		return email;
 	}
 
-	public boolean setEmail(String email) {
-		if (email.isEmpty()) {
-			System.out.println("Email invalido");
-			return false;
-		} else {
-			this.email = email;
-			return true;
+	public void setEmail(String email) {
+		if (email != null) {
+			if (!email.isEmpty()) {
+				int contArroba = 0;
+				for (int i = 0; i < email.length(); i++) {
+					if (email.charAt(i) == '@') {
+						contArroba++;
+					}
+				}
+				if (contArroba == 1 && !(email.charAt(email.length()-1)=='.')) {
+					this.email = email;
+				}
+			}
 		}
-
 	}
 
 	public String getInscricaoEstadual() {
 		return inscricaoEstadual;
 	}
 
-	public boolean setInscricaoEstadual(String inscricaoEstadual) {
-		if (inscricaoEstadual.length() < 13 && inscricaoEstadual.length() > 13) {
-			System.out.println("Inscrição invalida");
-			return false;
-		} else {
-			this.inscricaoEstadual = inscricaoEstadual;
-			return true;
+	public void setInscricaoEstadual(String inscricaoEstadual) {
+		if (inscricaoEstadual != null) {
+			if (inscricaoEstadual.length() == 13) {
+				this.inscricaoEstadual = inscricaoEstadual;
+			}
 		}
 	}
 
