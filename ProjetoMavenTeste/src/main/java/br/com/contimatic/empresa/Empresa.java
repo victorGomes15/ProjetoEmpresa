@@ -1,5 +1,7 @@
 package br.com.contimatic.empresa;
 
+import java.util.StringTokenizer;
+
 import javax.management.RuntimeErrorException;
 
 public class Empresa {
@@ -99,6 +101,7 @@ public class Empresa {
 	public void setEmail(String email) {
 		if (email != null) {
 			if (!email.isEmpty()) {
+				StringTokenizer token = new StringTokenizer(email, "@");
 				int contArroba = 0;
 				for (int i = 0; i < email.length(); i++) {
 					if (email.charAt(i) == '@') {
@@ -106,7 +109,9 @@ public class Empresa {
 					}
 				}
 				if (contArroba == 1 && !(email.charAt(email.length() - 1) == '.')) {
-					this.email = email;
+					if (!token.equals("") && !token.nextToken().equals("")) {
+						this.email = email;
+					}
 				}
 			}
 		}

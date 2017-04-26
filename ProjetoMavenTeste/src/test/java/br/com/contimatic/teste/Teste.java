@@ -51,13 +51,12 @@ public class Teste {
 		empresa.setCnpj("");
 		Assert.assertNull(empresa.getCnpj());
 	}
-	
+
 	@Test
 	public void nao_deve_aceitar_um_cnpj_com_letras() {
 		empresa.setCnpj("12345678901234l");
 		Assert.assertNull(empresa.getCnpj());
 	}
-	
 
 	@Test
 	public void nao_deve_aceitar_um_endereco_nulo() {
@@ -81,13 +80,12 @@ public class Teste {
 		empresa.setTelefone(null);
 		Assert.assertNull(empresa.getTelefone());
 	}
-	
+
 	@Test
 	public void deve_aceitar_telefone_com_8_ou_9_caracteres() {
 		empresa.setTelefone("123456789");
 		Assert.assertNotNull(empresa.getTelefone());
 	}
-
 
 	@Test
 	public void telefone_deve_nao_conte_menos_de_8_caracteres() {
@@ -106,13 +104,13 @@ public class Teste {
 		empresa.setTelefone("");
 		Assert.assertNull(empresa.getTelefone());
 	}
-	
+
 	@Test
 	public void nao_deve_aceitar_um_telefone_com_letras() {
 		empresa.setTelefone("5825495l");
 		Assert.assertNull(empresa.getTelefone());
 	}
-	
+
 	@Test
 	public void nao_deve_aceitar_um_dono_nulo() {
 		empresa.setDono(null);
@@ -124,13 +122,13 @@ public class Teste {
 		empresa.setDono("");
 		Assert.assertNull(empresa.getDono());
 	}
-	
+
 	@Test
 	public void nao_deve_aceitar_um_dono_com_menos_de_5_caracteres() {
 		empresa.setDono("Jose");
 		Assert.assertNull(empresa.getDono());
 	}
-	
+
 	@Test
 	public void nao_deve_aceitar_um_dono_com_numeros() {
 		empresa.setDono("Jose5");
@@ -148,7 +146,7 @@ public class Teste {
 		empresa.setInscricaoEstadual("");
 		Assert.assertNull(empresa.getInscricaoEstadual());
 	}
-	
+
 	@Test
 	public void deve_aceitar_uma_inscrição_com_13_caracteres() {
 		empresa.setInscricaoEstadual("1234567891023");
@@ -166,7 +164,7 @@ public class Teste {
 		empresa.setInscricaoEstadual("123456789012");
 		Assert.assertNull(empresa.getInscricaoEstadual());
 	}
-	
+
 	@Test
 	public void nao_deve_aceitar_uma_inscrição_estadual_com_letras() {
 		empresa.setInscricaoEstadual("123456789102l");
@@ -178,26 +176,25 @@ public class Teste {
 		empresa.setEmail(null);
 		Assert.assertNull(empresa.getEmail());
 	}
-	
+
 	@Test
 	public void nao_deve_aceitar_um_email_vazio() {
 		empresa.setEmail("");
 		Assert.assertNull(empresa.getEmail());
 	}
-	
+
 	@Test
 	public void nao_deve_aceitar_um_email_com_mais_de_1_arroba() {
 		empresa.setEmail("joao@gmail@.com.br");
 		Assert.assertNull(empresa.getEmail());
 	}
-	
+
 	@Test
 	public void deve_aceitar_um_email_com_1_arroba() {
 		empresa.setEmail("joao@gmail.com.br");
 		Assert.assertNotNull(empresa.getEmail());
 	}
-	
-	
+
 	@Test
 	public void nao_deve_aceitar_um_email_com_ponto_no_final() {
 		empresa.setEmail("joao@gmail.com.br.");
@@ -205,26 +202,38 @@ public class Teste {
 	}
 
 	@Test
-	public void nao_deve_aceitar_uma_razaoSocial_nula() {
-        empresa.setRazaoSocial(null);
+	public void nao_deve_aceitar_um_email_que_esteja_vazio_antes_do_arroba() {
+		empresa.setRazaoSocial("@gmail.com.br");
 		Assert.assertNull(empresa.getRazaoSocial());
 	}
-	
+
+	@Test
+	public void nao_deve_aceitar_um_email_que_esteja_vazio_depois_do_arroba() {
+		empresa.setRazaoSocial("jose@");
+		Assert.assertNull(empresa.getRazaoSocial());
+	}
+
+	@Test
+	public void nao_deve_aceitar_uma_razaoSocial_nula() {
+		empresa.setRazaoSocial(null);
+		Assert.assertNull(empresa.getRazaoSocial());
+	}
+
 	@Test
 	public void nao_deve_aceitar_uma_razaoSocial_com_caracteres_especiais() {
-        empresa.setRazaoSocial("luis@");
+		empresa.setRazaoSocial("luis@");
 		Assert.assertNull(empresa.getRazaoSocial());
 	}
-	
+
 	@Test
 	public void nao_deve_aceitar_um_nome_de_empresa_nulo() {
-        empresa.setRazaoSocial(null);
+		empresa.setRazaoSocial(null);
 		Assert.assertNull(empresa.getRazaoSocial());
 	}
 
 	@Test
 	public void nao_deve_aceitar_um_nome_de_empresa_vazia() {
-        empresa.setRazaoSocial("");
+		empresa.setRazaoSocial("");
 		Assert.assertNull(empresa.getRazaoSocial());
 	}
 
