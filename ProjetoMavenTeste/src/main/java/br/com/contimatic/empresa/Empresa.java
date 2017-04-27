@@ -1,15 +1,13 @@
 package br.com.contimatic.empresa;
 
-import java.util.StringTokenizer;
-
 public class Empresa {
 
 	private String cnpj;
 	private String razaoSocial;
 	private Endereco endereco;
-	private Telefone telefone[];
+	private Telefone telefone[]= new Telefone[5];
 	private String dono;
-	private String email;
+	private Email email;
 	private String inscricaoEstadual;
 	private String nomeEmpresa;
 
@@ -68,8 +66,12 @@ public class Empresa {
 		return telefone;
 	}
 
-	public void setTelefone(Telefone[] telefone) {
-		this.telefone = telefone;
+	public void setTelefone(Telefone telefone) {
+		if (this.telefone[0] == null) {
+			if (telefone.getDdd() != 0 && telefone.getNumero() != null && telefone.getTipo() != null) {
+				this.telefone[0] = telefone;
+			}
+		}
 	}
 
 	public String getDono() {
@@ -81,29 +83,6 @@ public class Empresa {
 			if (!dono.isEmpty() && dono.length() > 5) {
 				if (!dono.matches("[0-9]+")) {
 					this.dono = dono;
-				}
-			}
-		}
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		if (email != null) {
-			if (!email.isEmpty()) {
-				StringTokenizer token = new StringTokenizer(email, "@");
-				int contArroba = 0;
-				for (int i = 0; i < email.length(); i++) {
-					if (email.charAt(i) == '@') {
-						contArroba++;
-					}
-				}
-				if (contArroba == 1 && !(email.charAt(email.length() - 1) == '.')) {
-					if (!token.equals("") && !token.nextToken().equals("")) {
-						this.email = email;
-					}
 				}
 			}
 		}

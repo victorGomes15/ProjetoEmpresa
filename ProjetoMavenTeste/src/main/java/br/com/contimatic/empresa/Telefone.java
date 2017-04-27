@@ -1,12 +1,13 @@
 package br.com.contimatic.empresa;
 
-import java.util.ArrayList;
-
 public class Telefone {
 
 	private int ddd;
 	private String numero;
 	private String tipo;
+
+	public Telefone() {
+	}
 
 	public int getDdd() {
 		return ddd;

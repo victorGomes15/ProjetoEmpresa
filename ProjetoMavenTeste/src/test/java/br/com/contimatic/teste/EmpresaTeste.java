@@ -7,7 +7,6 @@ import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
 import br.com.contimatic.empresa.Empresa;
-import br.com.contimatic.empresa.Telefone;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class EmpresaTeste {
@@ -60,35 +59,6 @@ public class EmpresaTeste {
 		empresa.setEndereco(null);
 		Assert.assertNull(empresa.getEndereco());
 	}
-
-//	@Test
-//	public void nao_deve_ser_um_endereco_vazio() {
-//		empresa.setEndereco("");
-//		Assert.assertNull(empresa.getEndereco());
-//	}
-//
-//	@Test(expected = NullPointerException.class)
-//	public void getEnderecoTesteNull() {
-//		empresa.getEndereco().length();
-//	}
-
-	@Test
-	public void deve_aceitar_um_Telefone_valido() {
-		Telefone t = new Telefone();
-		t.setDdd(11);
-		t.setNumero("58254952");
-		t.setTipo("Fixo");
-		
-		Telefone t1 = new Telefone();
-		t1.setDdd(11);
-		t1.setNumero("58254952");
-		t1.setTipo("Fixo");
-		
-		Telefone tArray[]= new Telefone[2]; 
-		
-		empresa.setTelefone(tArray);
-	}
-	
 
 	@Test
 	public void nao_deve_aceitar_um_dono_nulo() {
@@ -150,35 +120,7 @@ public class EmpresaTeste {
 		Assert.assertNull(empresa.getInscricaoEstadual());
 	}
 
-	@Test
-	public void nao_deve_aceitar_um_email_nulo() {
-		empresa.setEmail(null);
-		Assert.assertNull(empresa.getEmail());
-	}
-
-	@Test
-	public void nao_deve_aceitar_um_email_vazio() {
-		empresa.setEmail("");
-		Assert.assertNull(empresa.getEmail());
-	}
-
-	@Test
-	public void nao_deve_aceitar_um_email_com_mais_de_1_arroba() {
-		empresa.setEmail("joao@gmail@.com.br");
-		Assert.assertNull(empresa.getEmail());
-	}
-
-	@Test
-	public void deve_aceitar_um_email_com_1_arroba() {
-		empresa.setEmail("joao@gmail.com.br");
-		Assert.assertNotNull(empresa.getEmail());
-	}
-
-	@Test
-	public void nao_deve_aceitar_um_email_com_ponto_no_final() {
-		empresa.setEmail("joao@gmail.com.br.");
-		Assert.assertNull(empresa.getEmail());
-	}
+	
 
 	@Test
 	public void nao_deve_aceitar_um_email_que_esteja_vazio_antes_do_arroba() {

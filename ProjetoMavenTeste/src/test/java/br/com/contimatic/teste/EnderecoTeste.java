@@ -68,6 +68,6 @@ public class EnderecoTeste {
 		endereco.setComplemento(-1);
 		Assert.assertEquals(0, endereco.getNumero());
 	}
-	
+
 	
 }
