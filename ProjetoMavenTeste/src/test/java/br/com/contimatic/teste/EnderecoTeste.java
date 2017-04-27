@@ -34,7 +34,7 @@ public class EnderecoTeste {
 	}
 
 	@Test
-	public void deve_aceitar_uma_rua_com_mais_de_4_caracteres() {
+	public void deve_aceitar_uma_rua_com_mais_de_3_caracteres() {
 		endereco.setRua("João VI");
 		Assert.assertNotNull(endereco.getRua());
 	}

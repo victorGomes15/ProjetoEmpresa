@@ -43,7 +43,7 @@ public class CidadeTeste {
 	@Test
 	public void deve_aceitar_um_bairro_valido() {
 		Bairro bairro = new Bairro();
-		bairro.setCodigo(1);
+		bairro.setCodigo("1");
 		bairro.setNomeBairro("Jardim");
 		cidade.setBairro(bairro);
 		Assert.assertNotNull(cidade.getBairro());
@@ -52,7 +52,7 @@ public class CidadeTeste {
 	@Test
 	public void nao_deve_aceitar_um_bairro_invalido() {
 		Bairro bairro = new Bairro();
-		bairro.setCodigo(0);
+		bairro.setCodigo("0");
 		bairro.setNomeBairro("sp");
 		cidade.setBairro(bairro);
 		Assert.assertNull(cidade.getBairro());

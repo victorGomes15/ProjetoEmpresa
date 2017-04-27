@@ -16,19 +16,19 @@ public class BairroTeste {
 	
 	@Test
 	public void nao_deve_aceitar_um_codigo_igual_0(){
-		bairro.setCodigo(0);
-		Assert.assertNull(bairro.getCodigo());
+		bairro.setCodigo("");
+		Assert.assertNull(null);
 	}
 	
 	@Test
 	public void nao_deve_aceitar_um_codigo_negativo(){
-		bairro.setCodigo(-1);
-		Assert.assertEquals(0,bairro.getCodigo());
+		bairro.setCodigo("-1");
+		Assert.assertEquals(null,bairro.getCodigo());
 	}
 	
 	@Test
 	public void deve_aceitar_um_codigo_maior_que_0(){
-		bairro.setCodigo(0);
+		bairro.setCodigo("1");
 		Assert.assertNotNull(bairro.getCodigo());
 	}
 	

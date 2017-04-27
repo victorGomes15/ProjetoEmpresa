@@ -17,15 +17,9 @@ public class EstadoTeste {
 	}
 	
 	@Test
-	public void nao_deve_aceitar_um_codigo_vazio(){
-		estado.setCod(0);
-		Assert.assertNull(estado.getCod());
-	}
-	
-	@Test
 	public void nao_deve_aceitar_um_codigo_igual_a_0(){
 		estado.setCod(0);
-		Assert.assertNull(estado.getCod());
+		Assert.assertEquals(0,estado.getCod());
 	}
 	
 	
@@ -75,7 +69,7 @@ public class EstadoTeste {
 		c.setCodigo(1);
 		c.setNome("sao Paulo");
 		Bairro bairro = new Bairro();
-		bairro.setCodigo(1);
+		bairro.setCodigo("1");
 		bairro.setNomeBairro("Jardim Ibirapuera");
 		c.setBairro(bairro);
 		estado.setCidade(c);

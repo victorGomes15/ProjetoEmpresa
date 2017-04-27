@@ -6,8 +6,6 @@ public class Endereco {
 	private int numero;
 	private int complemento;
 	private Estado estado;
-	private Cidade cidade;
-	private Bairro bairro;
 
 	public String getRua() {
 		return rua;
@@ -15,7 +13,7 @@ public class Endereco {
 
 	public void setRua(String rua) {
 		if (rua != null) {
-			if (!rua.isEmpty() && rua.length() > 4) {
+			if (!rua.isEmpty() && rua.length() >= 4) {
 				if (rua.matches("[A-Za-z0-9]")) {
 					this.rua = rua;
 				}

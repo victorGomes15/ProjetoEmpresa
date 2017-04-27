@@ -33,9 +33,11 @@ public class Estado {
 	}
 
 	public void setCidade(Cidade cidade) {
-		this.cidade = cidade;
+		if (cidade != null) {
+			if (cidade.getCodigo() != 0 && cidade.getBairro() != null && cidade.getNome() != null) {
+				this.cidade = cidade;
+			}
+		}
 	}
-	
-	
 
 }

@@ -34,7 +34,7 @@ public class Cidade {
 
 	public void setBairro(Bairro bairro) {
 		if (bairro != null) {
-			if (bairro.getNomeBairro() != null && bairro.getCodigo() != 0) {
+			if (bairro.getNomeBairro() != null && bairro.getCodigo().matches("[0-9]+")) {
 				this.bairro = bairro;
 			}
 		}
