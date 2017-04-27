@@ -5,7 +5,8 @@ public class Empresa {
 	private String cnpj;
 	private String razaoSocial;
 	private Endereco endereco;
-	private Telefone telefone[]= new Telefone[5];
+	private Telefone telefone[] = new Telefone[5];
+	private int tamanhoListaTelefone = 0;
 	private String dono;
 	private Email email;
 	private String inscricaoEstadual;
@@ -55,11 +56,11 @@ public class Empresa {
 	}
 
 	public void setEndereco(Endereco endereco) {
-		//// if (endereco != null) {
-		// if (!endereco.isEmpty()) {
-		// this.endereco = endereco;
-		// }
-		// }
+		if (endereco != null) {
+			if (endereco.getNumero() != 0 && endereco.getRua() != null && endereco.getEstado() != null) {
+				this.endereco = endereco;
+			}
+		}
 	}
 
 	public Telefone[] getTelefone() {
@@ -68,8 +69,11 @@ public class Empresa {
 
 	public void setTelefone(Telefone telefone) {
 		if (this.telefone[0] == null) {
-			if (telefone.getDdd() != 0 && telefone.getNumero() != null && telefone.getTipo() != null) {
-				this.telefone[0] = telefone;
+			if (tamanhoListaTelefone != this.telefone.length) {
+				if (telefone.getDdd() != 0 && telefone.getNumero() != null && telefone.getTipo() != null) {
+					this.telefone[this.tamanhoListaTelefone] = telefone;
+					this.tamanhoListaTelefone++;
+				}
 			}
 		}
 	}
@@ -114,7 +118,6 @@ public class Empresa {
 		}
 	}
 
-	@Override
 	public String toString() {
 		return cnpj + "(" + razaoSocial + "\n" + "\n" + nomeEmpresa + endereco + "\n" + email + "\n" + razaoSocial
 				+ "\n" + inscricaoEstadual + "\n" + telefone + "\n" + dono + ")";

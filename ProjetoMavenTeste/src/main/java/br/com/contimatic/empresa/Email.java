@@ -21,12 +21,13 @@ public class Email {
 					}
 				}
 				if (contArroba == 1 && !(enderecoEmail.charAt(enderecoEmail.length() - 1) == '.')) {
-					if (!(token.equals(null)) && token.nextToken().length()>0) {
-						this.enderecoEmail=enderecoEmail;
+					if (!(enderecoEmail.charAt(0) == '@')) {
+						if (token.hasMoreTokens() && !token.nextToken().equals("")) {
+							this.enderecoEmail = enderecoEmail;
+						}
 					}
 				}
 			}
 		}
-  }
-
+	}
 }

@@ -7,6 +7,7 @@ import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
 import br.com.contimatic.empresa.Empresa;
+import br.com.contimatic.empresa.Telefone;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class EmpresaTeste {
@@ -120,7 +121,15 @@ public class EmpresaTeste {
 		Assert.assertNull(empresa.getInscricaoEstadual());
 	}
 
-	
+	@Test
+	public void deve_aceitar_telefone_valido() {
+		Telefone tel = new Telefone();
+		tel.setDdd(11);
+		tel.setNumero("58254952");
+		tel.setTipo("fixo");
+		empresa.setTelefone(tel);
+		Assert.assertNotNull(empresa.getTelefone());
+	}
 
 	@Test
 	public void nao_deve_aceitar_um_email_que_esteja_vazio_antes_do_arroba() {
