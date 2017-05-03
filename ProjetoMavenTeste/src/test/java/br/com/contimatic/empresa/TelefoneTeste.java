@@ -95,8 +95,8 @@ public class TelefoneTeste {
 
 	@Test
 	public void deve_aceitar_um_Tipo_que_seja_igual_celular_ou_fixo() {
-		telefone.setTipo("fixo");
-		Assert.assertNotNull(telefone.getTipo());
+		telefone.setTipo("FiXo");
+		Assert.assertEquals("FiXo",telefone.getTipo());
 	}
 
 }
