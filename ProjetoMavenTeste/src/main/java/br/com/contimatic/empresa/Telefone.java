@@ -40,7 +40,7 @@ public class Telefone {
 	public void setTipo(String tipo) {
 		if (tipo != null) {
 			if (!tipo.isEmpty()) {
-				if (tipo.equalsIgnoreCase("Fixo") || tipo.equalsIgnoreCase("Celular")) {
+				if (tipo.equalsIgnoreCase("fixo") || tipo.equalsIgnoreCase("celular")) {
 					this.tipo = tipo;
 				}
 			}

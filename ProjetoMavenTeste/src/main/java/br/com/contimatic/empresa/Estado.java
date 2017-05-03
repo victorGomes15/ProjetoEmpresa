@@ -6,6 +6,11 @@ public class Estado {
 	private String uf;
 	private Cidade cidade;
 
+	
+	public Estado() {
+//		this.cidade = new Cidade();
+	}
+
 	public int getCod() {
 		return cod;
 	}
@@ -33,7 +38,7 @@ public class Estado {
 	}
 
 	public void setCidade(Cidade cidade) {
-		if (cidade != null) {
+		if (cidade !=null) {
 			if (cidade.getCodigo() != 0 && cidade.getBairro() != null && cidade.getNome() != null) {
 				this.cidade = cidade;
 			}

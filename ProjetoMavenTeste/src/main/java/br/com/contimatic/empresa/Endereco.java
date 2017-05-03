@@ -12,9 +12,9 @@ public class Endereco {
 	}
 
 	public void setRua(String rua) {
-		if (rua != null) {
-			if (!rua.isEmpty() && rua.length() >= 4) {
-				if (rua.matches("[A-Za-z0-9]")) {
+		if (rua !=null) {
+			if (!(rua.isEmpty()) && rua.length() >= 3) {
+				if (rua.matches("[a-z]")) {
 					this.rua = rua;
 				}
 			}

@@ -6,6 +6,10 @@ public class Cidade {
 	private String nome;
 	private Bairro bairro;
 
+	public Cidade() {
+//		this.bairro = new Bairro();
+	}
+
 	public int getCodigo() {
 		return codigo;
 	}
@@ -34,7 +38,7 @@ public class Cidade {
 
 	public void setBairro(Bairro bairro) {
 		if (bairro != null) {
-			if (bairro.getNomeBairro() != null && bairro.getCodigo().matches("[0-9]+")) {
+			if (bairro.getNomeBairro() != null && bairro.getCodigo()>0) {
 				this.bairro = bairro;
 			}
 		}

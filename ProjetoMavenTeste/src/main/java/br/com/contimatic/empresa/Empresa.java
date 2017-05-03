@@ -66,14 +66,16 @@ public class Empresa {
 	public Telefone[] getTelefone() {
 		return telefone;
 	}
+	
+	public void setTelefone(Telefone[] telefone) {
+		this.telefone = telefone;
+	}
 
 	public void setTelefone(Telefone telefone) {
-		if (this.telefone[0] == null) {
-			if (tamanhoListaTelefone != this.telefone.length) {
-				if (telefone.getDdd() != 0 && telefone.getNumero() != null && telefone.getTipo() != null) {
-					this.telefone[this.tamanhoListaTelefone] = telefone;
-					this.tamanhoListaTelefone++;
-				}
+		if (tamanhoListaTelefone < this.telefone.length) {
+			if (telefone.getDdd() > 0 && telefone.getNumero() != null && telefone.getTipo() != null) {
+				this.telefone[this.tamanhoListaTelefone] = telefone;
+				this.tamanhoListaTelefone++;
 			}
 		}
 	}

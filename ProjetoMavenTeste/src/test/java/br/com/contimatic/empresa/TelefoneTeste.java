@@ -1,4 +1,4 @@
-package br.com.contimatic.teste;
+package br.com.contimatic.empresa;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -35,7 +35,7 @@ public class TelefoneTeste {
 
 	@Test
 	public void deve_aceitar_8_ou_9_caracteres_no_numero() {
-		telefone.setNumero("12345678");
+		telefone.setNumero("58254952");
 		Assert.assertNotNull(telefone.getNumero());
 	}
 
@@ -47,7 +47,7 @@ public class TelefoneTeste {
 
 	@Test
 	public void nao_deve_conter_mais_de_9_caracteres_no_numero() {
-		telefone.setNumero("1234567890");
+		telefone.setNumero("5825495210");
 		Assert.assertNull(telefone.getNumero());
 	}
 
@@ -61,6 +61,12 @@ public class TelefoneTeste {
 	public void nao_deve_aceitar_um_Numero_com_letras() {
 		telefone.setNumero("5825495l");
 		Assert.assertNull(telefone.getNumero());
+	}
+	
+	@Test
+	public void deve_aceitar_um_Tipo_que_seja_celular_ou_fixo() {
+		telefone.setTipo("FiXo");
+		Assert.assertNotNull(telefone.getTipo());
 	}
 
 	@Test

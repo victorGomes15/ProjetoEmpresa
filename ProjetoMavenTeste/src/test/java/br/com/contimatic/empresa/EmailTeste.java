@@ -1,4 +1,4 @@
-package br.com.contimatic.teste;
+package br.com.contimatic.empresa;
 
 import org.junit.Assert;
 import org.junit.Before;

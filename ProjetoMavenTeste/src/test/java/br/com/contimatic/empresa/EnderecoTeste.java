@@ -1,4 +1,4 @@
-package br.com.contimatic.teste;
+package br.com.contimatic.empresa;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -35,8 +35,8 @@ public class EnderecoTeste {
 
 	@Test
 	public void deve_aceitar_uma_rua_com_mais_de_3_caracteres() {
-		endereco.setRua("João VI");
-		Assert.assertNotNull(endereco.getRua());
+		endereco.setRua("joao");
+		Assert.assertEquals("joao",endereco.getRua());
 	}
 
 	@Test

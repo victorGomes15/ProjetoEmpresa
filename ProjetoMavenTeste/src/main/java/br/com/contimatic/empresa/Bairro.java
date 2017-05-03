@@ -2,15 +2,15 @@ package br.com.contimatic.empresa;
 
 public class Bairro {
 
-	private String codigo;
+	private int codigo;
 	private String nomeBairro;
 
-	public String getCodigo() {
+	public int getCodigo() {
 		return codigo;
 	}
 
-	public void setCodigo(String codigo) {
-		if (codigo.matches("[1-9]+")) {
+	public void setCodigo(int codigo) {
+		if (codigo > 0) {
 			this.codigo = codigo;
 		}
 	}
