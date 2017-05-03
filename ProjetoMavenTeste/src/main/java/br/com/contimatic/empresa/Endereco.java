@@ -12,9 +12,9 @@ public class Endereco {
 	}
 
 	public void setRua(String rua) {
-		if (rua !=null) {
+		if (rua != null) {
 			if (!(rua.isEmpty()) && rua.length() >= 3) {
-				if (rua.matches("[a-z]")) {
+				if (rua.matches("[a-zA-Z_0-9]")) {
 					this.rua = rua;
 				}
 			}
@@ -48,6 +48,5 @@ public class Endereco {
 	public void setEstado(Estado estado) {
 		this.estado = estado;
 	}
-	
-	
+
 }

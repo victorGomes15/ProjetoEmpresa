@@ -5,7 +5,7 @@ public class Empresa {
 	private String cnpj;
 	private String razaoSocial;
 	private Endereco endereco;
-	private Telefone telefone[] = new Telefone[5];
+	private Telefone telefone[];
 	private int tamanhoListaTelefone = 0;
 	private String dono;
 	private Email email;
@@ -13,13 +13,8 @@ public class Empresa {
 	private String nomeEmpresa;
 
 	public Empresa() {
-		this.cnpj = null;
-		this.razaoSocial = null;
-		this.endereco = null;
-		this.telefone = null;
-		this.dono = null;
-		this.email = null;
-		this.inscricaoEstadual = null;
+		this.telefone = new Telefone[5];
+		
 	}
 
 	public String getCnpj() {
@@ -66,7 +61,7 @@ public class Empresa {
 	public Telefone[] getTelefone() {
 		return telefone;
 	}
-	
+
 	public void setTelefone(Telefone[] telefone) {
 		this.telefone = telefone;
 	}
