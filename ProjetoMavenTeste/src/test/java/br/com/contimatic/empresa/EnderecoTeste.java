@@ -29,14 +29,14 @@ public class EnderecoTeste {
 
 	@Test
 	public void nao_deve_aceitar_uma_rua_com_menos_de_4_caracteres() {
-		endereco.setRua("cas ");
+		endereco.setRua("cas");
 		Assert.assertNull(endereco.getRua());
 	}
 
 	@Test
-	public void deve_aceitar_uma_rua_com_mais_de_3_caracteres() {
-		endereco.setRua("joao");
-		Assert.assertEquals("joao",endereco.getRua());
+	public void deve_aceitar_uma_rua_com_mais_de_4_caracteres() {
+		endereco.setRua("joao 12");
+		Assert.assertEquals("joao 12",endereco.getRua());
 	}
 
 	@Test

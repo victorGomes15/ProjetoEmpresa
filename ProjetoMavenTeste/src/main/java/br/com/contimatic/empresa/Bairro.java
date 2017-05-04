@@ -4,6 +4,7 @@ public class Bairro {
 
 	private int codigo;
 	private String nomeBairro;
+	private String cep;
 
 	public int getCodigo() {
 		return codigo;
@@ -28,4 +29,22 @@ public class Bairro {
 			}
 		}
 	}
+
+	public String getCep() {
+		return cep;
+	}
+
+	public void setCep(String cep) {
+		if (cep != null) {
+			if (cep.matches("^\\d{5}-\\d{3}$")) {
+				this.cep = cep;
+			}
+		}
+	}
+
+	@Override
+	public String toString() {
+		return "Cod Bairro: " + this.codigo + "\nBairro: " + this.nomeBairro + "\nCep: " + this.cep;
+	}
+
 }

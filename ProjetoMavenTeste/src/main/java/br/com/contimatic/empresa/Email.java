@@ -19,10 +19,18 @@ public class Email {
 				}
 				if (contArroba == 1 && !(enderecoEmail.charAt(enderecoEmail.length() - 1) == '.')) {
 					if (!(enderecoEmail.charAt(0) == '@')) {
-						this.enderecoEmail = enderecoEmail;
+						if (!(enderecoEmail.indexOf("@") == enderecoEmail.length() - 1)) {
+							this.enderecoEmail = enderecoEmail;
+						}
 					}
 				}
 			}
 		}
 	}
+
+	@Override
+	public String toString() {
+		return "Email: "+this.enderecoEmail;
+	}
+
 }

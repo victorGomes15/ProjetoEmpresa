@@ -47,4 +47,8 @@ public class Telefone {
 		}
 	}
 
+	@Override
+	public String toString() {
+		return "Ddd: "+this.ddd+"\nNumero: "+this.numero+"\nTipo: "+this.tipo;
+	}
 }

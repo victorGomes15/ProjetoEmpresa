@@ -36,7 +36,7 @@ public class EmailTeste {
 	@Test
 	public void deve_aceitar_um_email_com_1_arroba() {
 		email.setEnderecoEmail("joao@gmail.com.br");
-		Assert.assertNotNull(email.getEnderecoEmail());
+		Assert.assertEquals("joao@gmail.com.br", email.getEnderecoEmail());
 	}
 
 	@Test

@@ -13,8 +13,8 @@ public class Endereco {
 
 	public void setRua(String rua) {
 		if (rua != null) {
-			if (!(rua.isEmpty()) && rua.length() >= 3) {
-				if (rua.matches("[a-zA-Z_0-9]")) {
+			if (!(rua.isEmpty()) && rua.length() >= 4) {
+				if (rua.matches("[a-zA-Z\\s_\\d]+")) {
 					this.rua = rua;
 				}
 			}
@@ -47,6 +47,11 @@ public class Endereco {
 
 	public void setEstado(Estado estado) {
 		this.estado = estado;
+	}
+
+	@Override
+	public String toString() {
+		return this.estado + "\nRua: " + this.rua + "\nNúmero: " + this.numero + "\nComplemento: " + this.complemento;
 	}
 
 }

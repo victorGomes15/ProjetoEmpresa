@@ -98,5 +98,10 @@ public class TelefoneTeste {
 		telefone.setTipo("FiXo");
 		Assert.assertEquals("FiXo",telefone.getTipo());
 	}
+	
+//	@Test
+//	public void deve_printar_o_onjeto_Telefone() {
+//		System.out.println(telefone);
+//	}
 
 }

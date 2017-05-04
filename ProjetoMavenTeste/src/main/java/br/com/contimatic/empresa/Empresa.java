@@ -14,7 +14,7 @@ public class Empresa {
 
 	public Empresa() {
 		this.telefone = new Telefone[5];
-		
+
 	}
 
 	public String getCnpj() {
@@ -60,10 +60,6 @@ public class Empresa {
 
 	public Telefone[] getTelefone() {
 		return telefone;
-	}
-
-	public void setTelefone(Telefone[] telefone) {
-		this.telefone = telefone;
 	}
 
 	public void setTelefone(Telefone telefone) {
@@ -116,8 +112,9 @@ public class Empresa {
 	}
 
 	public String toString() {
-		return cnpj + "(" + razaoSocial + "\n" + "\n" + nomeEmpresa + endereco + "\n" + email + "\n" + razaoSocial
-				+ "\n" + inscricaoEstadual + "\n" + telefone + "\n" + dono + ")";
+		return "cnpj: " + this.cnpj + "\tRazão social: " + this.razaoSocial + "\nNome empresa: " + this.nomeEmpresa
+				+ "\nInscrição social: " + this.inscricaoEstadual + "\nDono: " + this.dono + "\n" + this.email
+				+ this.endereco + this.telefone;
 	}
 
 }

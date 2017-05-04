@@ -44,5 +44,10 @@ public class Estado {
 			}
 		}
 	}
+	
+	@Override
+	public String toString() {
+		return "Cod Estado: "+this.cod+"\nUf: "+this.uf+"\n"+this.cidade;
+	}
 
 }

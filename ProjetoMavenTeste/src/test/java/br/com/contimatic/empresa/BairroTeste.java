@@ -4,8 +4,6 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import br.com.contimatic.empresa.Bairro;
-
 public class BairroTeste {
 
 	private Bairro bairro;
@@ -49,5 +47,35 @@ public class BairroTeste {
 	public void nao_deve_aceitar_um_bairro_menor_que_4_caracteres() {
 		bairro.setNomeBairro("123");
 		Assert.assertNull(bairro.getNomeBairro());
+	}
+
+	@Test
+	public void deve_aceitar_um_cep_valido() {
+		bairro.setCep("12345-123");
+		Assert.assertEquals("12345-123", bairro.getCep());;
+	}
+
+	@Test
+	public void nao_deve_aceitar_um_cep_que_contenha_letras() {
+		bairro.setCep("12345-17s");
+		Assert.assertNull(bairro.getCep());
+	}
+	
+	@Test
+	public void nao_deve_aceitar_um_cep_que_contenha_caracteres_Especiais() {
+		bairro.setCep("12345-17@");
+		Assert.assertNull(bairro.getCep());
+	}
+	
+	@Test
+	public void nao_deve_aceitar_um_cep_que_nulo() {
+		bairro.setCep(null);
+		Assert.assertNull(bairro.getCep());
+	}
+	
+	@Test
+	public void nao_deve_aceitar_um_cep_que_esteja_vazio() {
+		bairro.setCep("12345-17@");
+		Assert.assertNull(bairro.getCep());
 	}
 }

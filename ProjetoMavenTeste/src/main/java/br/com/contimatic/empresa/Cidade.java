@@ -43,5 +43,10 @@ public class Cidade {
 			}
 		}
 	}
+	
+	@Override
+	public String toString() {
+		return "Cod cidade: "+this.codigo+"\nCidade: "+this.nome+"\n"+this.bairro;
+	}
 
 }

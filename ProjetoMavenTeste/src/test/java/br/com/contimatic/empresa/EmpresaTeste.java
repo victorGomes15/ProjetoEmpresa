@@ -169,6 +169,6 @@ public class EmpresaTeste {
 
 	@Test
 	public void deve_printar_o_objeto_de_empresa() {
-		empresa.toString();
+		System.out.println(empresa.toString());
 	}
 }
