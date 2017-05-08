@@ -46,6 +46,11 @@ public class Estado {
 	}
 	
 	@Override
+	public int hashCode() {
+		return this.cod;
+	}
+	
+	@Override
 	public String toString() {
 		return "Cod Estado: "+this.cod+"\nUf: "+this.uf+"\n"+this.cidade;
 	}

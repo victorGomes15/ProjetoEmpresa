@@ -45,6 +45,10 @@ public class Cidade {
 	}
 	
 	@Override
+	public int hashCode() {
+		return this.codigo;
+	}
+	@Override
 	public String toString() {
 		return "Cod cidade: "+this.codigo+"\nCidade: "+this.nome+"\n"+this.bairro;
 	}

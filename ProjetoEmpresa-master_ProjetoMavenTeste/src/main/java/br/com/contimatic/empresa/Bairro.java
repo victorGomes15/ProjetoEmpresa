@@ -43,6 +43,11 @@ public class Bairro {
 	}
 
 	@Override
+	public int hashCode() {
+		return this.codigo;
+	}
+	
+	@Override
 	public String toString() {
 		return "Cod Bairro: " + this.codigo + "\nBairro: " + this.nomeBairro + "\nCep: " + this.cep;
 	}

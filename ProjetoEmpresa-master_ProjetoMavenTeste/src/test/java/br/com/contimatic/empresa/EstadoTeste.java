@@ -80,20 +80,4 @@ public class EstadoTeste {
 		Assert.assertNotNull(estado.getCidade());
 	}
 	
-//	@Test
-//	public void deve_printar_o_estado() {
-//		estado.setUf("Sp");
-//		Cidade c = new Cidade();
-//		c.setCodigo(1);
-//		c.setNome("sao Paulo");
-//		Bairro bairro = new Bairro();
-//		bairro.setCodigo(1);
-//		bairro.setNomeBairro("Jardim Ibirapuera");
-//		bairro.setCep("05857-380");
-//		c.setBairro(bairro);
-//		estado.setCidade(c);
-//
-//		System.out.println(estado);
-//	}
-
 }

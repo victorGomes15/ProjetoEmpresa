@@ -46,6 +46,11 @@ public class Telefone {
 			}
 		}
 	}
+	
+	@Override
+	public int hashCode() {
+		return this.ddd;
+	}
 
 	@Override
 	public String toString() {

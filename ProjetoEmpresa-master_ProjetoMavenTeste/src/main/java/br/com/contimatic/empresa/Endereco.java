@@ -41,6 +41,8 @@ public class Endereco {
 		}
 	}
 
+	
+	
 	public Estado getEstado() {
 		return estado;
 	}
@@ -49,6 +51,11 @@ public class Endereco {
 		this.estado = estado;
 	}
 
+	@Override
+	public int hashCode() {
+		return this.rua.charAt(0);
+	}
+	
 	@Override
 	public String toString() {
 		return "\nRua: " + this.rua + "\nNúmero: " + this.numero + "\nComplemento: " + this.complemento+this.estado;
