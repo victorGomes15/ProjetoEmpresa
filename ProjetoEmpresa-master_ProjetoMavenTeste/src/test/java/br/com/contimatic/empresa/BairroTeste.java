@@ -1,18 +1,36 @@
 package br.com.contimatic.empresa;
 
+import org.junit.After;
+import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class BairroTeste {
 
 	private Bairro bairro;
+	@BeforeClass
+    public static void setUpClass() {
+    System.out.println("Começo testes da classe "+BairroTeste.class.getSimpleName()+"\n");
+	}
+    
+    @AfterClass
+    public static void tearDownClass() {
+    	System.out.println("Fim dos testes da classe "+BairroTeste.class.getSimpleName()+"\n");
+    }
 
 	@Before
 	public void criaObjt() {
 		bairro = new Bairro();
+		System.out.println("Começo de teste");
 	}
-
+	
+	@After
+	public void finalizacao_Teste() {
+		System.out.println("Fim de teste");
+	}
+	
 	@Test
 	public void nao_deve_aceitar_um_codigo_igual_0() {
 		bairro.setCodigo(0);

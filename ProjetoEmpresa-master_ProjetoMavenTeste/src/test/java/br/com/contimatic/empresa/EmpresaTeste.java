@@ -1,23 +1,45 @@
 package br.com.contimatic.empresa;
 
+import org.junit.After;
+import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
 import br.com.contimatic.empresa.Empresa;
 import br.com.contimatic.empresa.Telefone;
 
+
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class EmpresaTeste {
 
 	private Empresa empresa;
 
+	@BeforeClass
+    public static void setUpClass() {
+		System.out.println("Começo dos testes da classe "+EmpresaTeste.class.getSimpleName()+"\n");
+	}
+    
+    @AfterClass
+    public static void tearDownClass() {
+    	System.out.println("Fim dos testes da classe"+EmpresaTeste.class.getSimpleName()+"\n");
+    }
+	
 	@Before
 	public void criarObj() {
 		empresa = new Empresa();
+		System.out.println("Começo do teste");
 	}
+	
+	@After
+	public void finalizacao_Teste() {
+		System.out.println("Fim de teste");;
+	}
+	
 
 	@Test
 	public void deve_aceitar_um_cnpj_com_14_caracteres() {
@@ -121,7 +143,8 @@ public class EmpresaTeste {
 		Assert.assertNull(empresa.getInscricaoEstadual());
 	}
 
-	@Test
+	@Ignore
+	@Test(timeout=100)
 	public void deve_aceitar_telefone_valido() {
 		Telefone tel = new Telefone();
 		tel.setDdd(11);

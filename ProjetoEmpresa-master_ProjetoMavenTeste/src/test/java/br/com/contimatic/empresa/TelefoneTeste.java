@@ -1,7 +1,10 @@
 package br.com.contimatic.empresa;
 
+import org.junit.After;
+import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import br.com.contimatic.empresa.Telefone;
@@ -10,9 +13,25 @@ public class TelefoneTeste {
 
 	private Telefone telefone;
 
+	@BeforeClass
+    public static void setUpClass() {
+		System.out.println("Começo dos testes da classe "+TelefoneTeste.class.getSimpleName()+"\n");
+    }
+    
+    @AfterClass
+    public static void tearDownClass() {
+    	System.out.println("Fim dos testes da classe "+TelefoneTeste.class.getSimpleName()+"\n");
+    }
+	
 	@Before
 	public void criar_objeto_telefone() {
 		telefone = new Telefone();
+		System.out.println("Começo do teste ");
+	}
+	
+	@After
+	public void finalizacao_Teste() {
+		System.out.println("Fim de teste");;
 	}
 
 	@Test
@@ -99,9 +118,5 @@ public class TelefoneTeste {
 		Assert.assertEquals("FiXo",telefone.getTipo());
 	}
 	
-//	@Test
-//	public void deve_printar_o_onjeto_Telefone() {
-//		System.out.println(telefone);
-//	}
 
 }
