@@ -2,19 +2,18 @@ package br.com.contimatic.empresa;
 
 public class Cidade {
 
-	private int codigo;
+	private Integer codigo;
 	private String nome;
 	private Bairro bairro;
 
 	public Cidade() {
-//		this.bairro = new Bairro();
 	}
 
-	public int getCodigo() {
+	public Integer getCodigo() {
 		return codigo;
 	}
 
-	public void setCodigo(int codigo) {
+	public void setCodigo(Integer codigo) {
 		this.codigo = codigo;
 	}
 
@@ -37,10 +36,8 @@ public class Cidade {
 	}
 
 	public void setBairro(Bairro bairro) {
-		if (bairro != null) {
-			if (bairro.getNomeBairro() != null && bairro.getCodigo()>0) {
-				this.bairro = bairro;
-			}
+		if (bairro != null && bairro.getNomeBairro() != null && bairro.getCodigo() > 0) {
+			this.bairro = bairro;
 		}
 	}
 	
@@ -48,6 +45,7 @@ public class Cidade {
 	public int hashCode() {
 		return this.codigo;
 	}
+	
 	@Override
 	public String toString() {
 		return "Cod cidade: "+this.codigo+"\nCidade: "+this.nome+"\n"+this.bairro;

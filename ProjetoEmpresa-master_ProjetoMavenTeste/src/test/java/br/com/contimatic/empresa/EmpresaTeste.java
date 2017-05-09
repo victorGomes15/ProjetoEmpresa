@@ -142,8 +142,7 @@ public class EmpresaTeste {
 		empresa.setInscricaoEstadual("123456789102l");
 		Assert.assertNull(empresa.getInscricaoEstadual());
 	}
-
-	@Ignore
+	
 	@Test(timeout=100)
 	public void deve_aceitar_telefone_valido() {
 		Telefone tel = new Telefone();
@@ -189,7 +188,8 @@ public class EmpresaTeste {
 		empresa.setRazaoSocial("");
 		Assert.assertNull(empresa.getRazaoSocial());
 	}
-
+	
+	@Ignore
 	@Test
 	public void deve_printar_o_objeto_de_empresa() {
 		System.out.println(empresa.toString());

@@ -2,17 +2,20 @@ package br.com.contimatic.empresa;
 
 import java.util.Arrays;
 
+import javax.xml.crypto.Data;
+
 public class Empresa {
 
 	private String cnpj;
 	private String razaoSocial;
 	private Endereco endereco;
 	private Telefone telefone[];
-	private int tamanhoListaTelefone = 0;
+	private int tamanhoListaTelefone;
 	private String dono;
 	private Email email;
 	private String inscricaoEstadual;
 	private String nomeEmpresa;
+	private Data dataCriacao;
 
 	public Empresa() {
 		this.telefone = new Telefone[5];
@@ -67,7 +70,7 @@ public class Empresa {
 	public void setTelefone(Telefone telefone) {
 		if (tamanhoListaTelefone < this.telefone.length) {
 			if (telefone.getDdd() > 0 && telefone.getNumero() != null && telefone.getTipo() != null) {
-				this.telefone[this.tamanhoListaTelefone] = telefone;
+				this.telefone[tamanhoListaTelefone] = telefone;
 				this.tamanhoListaTelefone++;
 			}
 		}
@@ -85,6 +88,14 @@ public class Empresa {
 				}
 			}
 		}
+	}
+
+	public Data getDataCriacao() {
+		return dataCriacao;
+	}
+
+	public void setDataCriacao(Data dataCriacao) {
+		this.dataCriacao = dataCriacao;
 	}
 
 	public String getInscricaoEstadual() {
@@ -112,7 +123,6 @@ public class Empresa {
 			}
 		}
 	}
-	
 
 	public String toString() {
 		return "\n\t Dados Empresa:\n" + "cnpj: " + this.cnpj + "\tRazão social: " + this.razaoSocial

@@ -8,7 +8,6 @@ public class Estado {
 
 	
 	public Estado() {
-//		this.cidade = new Cidade();
 	}
 
 	public int getCod() {

@@ -2,7 +2,7 @@ package br.com.contimatic.empresa;
 
 public class Bairro {
 
-	private int codigo;
+	private Integer codigo;
 	private String nomeBairro;
 	private String cep;
 
@@ -21,12 +21,8 @@ public class Bairro {
 	}
 
 	public void setNomeBairro(String nomeBairro) {
-		if (nomeBairro != null) {
-			if (nomeBairro != "") {
-				if (nomeBairro.length() > 3) {
-					this.nomeBairro = nomeBairro;
-				}
-			}
+		if (nomeBairro != null && !nomeBairro.equals("") && nomeBairro.length() > 3) {
+			this.nomeBairro = nomeBairro;
 		}
 	}
 

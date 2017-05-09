@@ -14,42 +14,42 @@ public class TelefoneTeste {
 	private Telefone telefone;
 
 	@BeforeClass
-    public static void setUpClass() {
-		System.out.println("Começo dos testes da classe "+TelefoneTeste.class.getSimpleName()+"\n");
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    	System.out.println("Fim dos testes da classe "+TelefoneTeste.class.getSimpleName()+"\n");
-    }
-	
+	public static void setUpClass() {
+		System.out.println("Começo dos testes da classe " + TelefoneTeste.class.getSimpleName() + "\n");
+	}
+
+	@AfterClass
+	public static void tearDownClass() {
+		System.out.println("Fim dos testes da classe " + TelefoneTeste.class.getSimpleName() + "\n");
+	}
+
 	@Before
 	public void criar_objeto_telefone() {
 		telefone = new Telefone();
 		System.out.println("Começo do teste ");
 	}
-	
+
 	@After
 	public void finalizacao_Teste() {
-		System.out.println("Fim de teste");;
+		System.out.println("Fim de teste");
 	}
 
 	@Test
 	public void nao_deve_aceitar_ddd_menor_que_11() {
 		telefone.setDdd(10);
-		Assert.assertEquals(0, telefone.getDdd());
+		Assert.assertNull(telefone.getDdd());
 	}
 
 	@Test
 	public void nao_deve_aceitar_ddd_maior_que_99() {
 		telefone.setDdd(100);
-		Assert.assertEquals(0, telefone.getDdd());
+		Assert.assertNull(telefone.getDdd());
 	}
 
 	@Test
 	public void deve_aceitar_ddd_entre_11_e_99() {
 		telefone.setDdd(20);
-		Assert.assertEquals(20, telefone.getDdd());
+		Assert.assertNotNull(telefone.getDdd());
 	}
 
 	@Test
@@ -81,7 +81,7 @@ public class TelefoneTeste {
 		telefone.setNumero("5825495l");
 		Assert.assertNull(telefone.getNumero());
 	}
-	
+
 	@Test
 	public void deve_aceitar_um_Tipo_que_seja_celular_ou_fixo() {
 		telefone.setTipo("FiXo");
@@ -115,8 +115,7 @@ public class TelefoneTeste {
 	@Test
 	public void deve_aceitar_um_Tipo_que_seja_igual_celular_ou_fixo() {
 		telefone.setTipo("FiXo");
-		Assert.assertEquals("FiXo",telefone.getTipo());
+		Assert.assertEquals("FiXo", telefone.getTipo());
 	}
-	
 
 }

@@ -71,21 +71,21 @@ public class EnderecoTeste {
 	}
 
 	@Test
-	public void nao_deve_aceitar_um_numero_menor_ou_igual_a_0() {
+	public void nao_deve_aceitar_um_numero_igual_a_0() {
 		endereco.setNumero(0);
-		Assert.assertEquals(0, endereco.getNumero());
+		Assert.assertNull( endereco.getNumero());
 	}
 	
 	@Test
 	public void deve_aceitar_um_complemento_maior_igual_a_0() {
 		endereco.setComplemento(0);
-		Assert.assertEquals(0, endereco.getNumero());
+		Assert.assertNull(endereco.getNumero());
 	}
 	
 	@Test
 	public void nao_deve_aceitar_um_complemento_menor_que_0() {
 		endereco.setComplemento(-1);
-		Assert.assertEquals(0, endereco.getNumero());
+		Assert.assertNull(endereco.getNumero());
 	}
 
 	

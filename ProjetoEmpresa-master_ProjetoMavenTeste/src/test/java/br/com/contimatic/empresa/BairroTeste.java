@@ -10,27 +10,28 @@ import org.junit.Test;
 public class BairroTeste {
 
 	private Bairro bairro;
+
 	@BeforeClass
-    public static void setUpClass() {
-    System.out.println("Começo testes da classe "+BairroTeste.class.getSimpleName()+"\n");
+	public static void setUpClass() {
+		System.out.println("Começo testes da classe " + BairroTeste.class.getSimpleName() + "\n");
 	}
-    
-    @AfterClass
-    public static void tearDownClass() {
-    	System.out.println("Fim dos testes da classe "+BairroTeste.class.getSimpleName()+"\n");
-    }
+
+	@AfterClass
+	public static void tearDownClass() {
+		System.out.println("Fim dos testes da classe " + BairroTeste.class.getSimpleName() + "\n");
+	}
 
 	@Before
 	public void criaObjt() {
 		bairro = new Bairro();
 		System.out.println("Começo de teste");
 	}
-	
+
 	@After
 	public void finalizacao_Teste() {
 		System.out.println("Fim de teste");
 	}
-	
+
 	@Test
 	public void nao_deve_aceitar_um_codigo_igual_0() {
 		bairro.setCodigo(0);
@@ -70,7 +71,7 @@ public class BairroTeste {
 	@Test
 	public void deve_aceitar_um_cep_valido() {
 		bairro.setCep("12345-123");
-		Assert.assertEquals("12345-123", bairro.getCep());;
+		Assert.assertEquals("12345-123", bairro.getCep());
 	}
 
 	@Test
@@ -78,19 +79,19 @@ public class BairroTeste {
 		bairro.setCep("12345-17s");
 		Assert.assertNull(bairro.getCep());
 	}
-	
+
 	@Test
 	public void nao_deve_aceitar_um_cep_que_contenha_caracteres_Especiais() {
 		bairro.setCep("12345-17@");
 		Assert.assertNull(bairro.getCep());
 	}
-	
+
 	@Test
 	public void nao_deve_aceitar_um_cep_que_nulo() {
 		bairro.setCep(null);
 		Assert.assertNull(bairro.getCep());
 	}
-	
+
 	@Test
 	public void nao_deve_aceitar_um_cep_que_esteja_vazio() {
 		bairro.setCep("12345-17@");

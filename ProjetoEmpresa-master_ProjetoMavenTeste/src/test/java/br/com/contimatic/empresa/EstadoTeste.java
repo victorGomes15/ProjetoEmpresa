@@ -7,12 +7,8 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import br.com.contimatic.empresa.Bairro;
-import br.com.contimatic.empresa.Cidade;
-import br.com.contimatic.empresa.Estado;
-
 public class EstadoTeste {
-
+	
 	private Estado estado = new Estado();
 	
 	@BeforeClass
@@ -75,27 +71,27 @@ public class EstadoTeste {
 
 	@Test
 	public void nao_deve_aceitar_uma_cidade_invalida() {
-		Cidade c = new Cidade();
-		c.setCodigo(-1);
-		c.setNome(null);
+		Cidade cidade = new Cidade();
+		cidade.setCodigo(-1);
+		cidade.setNome(null);
 		Bairro bairro = new Bairro();
 		bairro.setCodigo(1);
 		bairro.setNomeBairro("Jardim Ibirapuera");
-		c.setBairro(bairro);
-		estado.setCidade(c);
+		cidade.setBairro(bairro);
+		estado.setCidade(cidade);
 		Assert.assertNull(estado.getCidade());
 	}
 
 	@Test
 	public void deve_aceitar_uma_cidade_valida() {
-		Cidade c = new Cidade();
-		c.setCodigo(1);
-		c.setNome("sao Paulo");
+		Cidade cidade = new Cidade();
+		cidade.setCodigo(1);
+		cidade.setNome("sao Paulo");
 		Bairro bairro = new Bairro();
 		bairro.setCodigo(1);
 		bairro.setNomeBairro("Jardim Ibirapuera");
-		c.setBairro(bairro);
-		estado.setCidade(c);
+		cidade.setBairro(bairro);
+		estado.setCidade(cidade);
 
 		Assert.assertNotNull(estado.getCidade());
 	}
