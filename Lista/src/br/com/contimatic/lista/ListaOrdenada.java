@@ -44,6 +44,7 @@ public class ListaOrdenada {
 			previo.setNext(del.getNext()); // remove numa posição intermediária
 	}
 
+	
 	public String toString() {
 
 		// Verificando se a Lista está vazia
