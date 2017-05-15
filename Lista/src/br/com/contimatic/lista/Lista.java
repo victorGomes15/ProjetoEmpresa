@@ -1,3 +1,4 @@
+package br.com.contimatic.lista;
 
 public class Lista {
 
