@@ -2,7 +2,7 @@ package br.com.contimatic.fila;
 
 public class Fila {
 
-	NoFila inicio, fim;
+	NoEncadeado inicio, fim;
 	private int size;
 
 	public Fila() {
@@ -11,7 +11,7 @@ public class Fila {
 	}
 
 	public void enqueue(Integer dado) {
-		NoFila novo = new NoFila(dado);
+		NoEncadeado novo = new NoEncadeado(dado);
 
 		if (isEmpty()) {
 			inicio = novo;
@@ -27,11 +27,11 @@ public class Fila {
 		return size == 0 ? true : false;
 	}
 
-	public NoFila dequeue() {
+	public NoEncadeado dequeue() {
 		if (isEmpty()) {
 			System.out.println("Fila Vazia");
 		} else {
-			NoFila aux = inicio;
+			NoEncadeado aux = inicio;
 			inicio = inicio.getNext();
 			size--;
 			return aux;
@@ -43,7 +43,7 @@ public class Fila {
 		if (isEmpty()) {
 			System.out.print("Fila vazia.");
 		} else {
-			NoFila atual = inicio; // do inicio
+			NoEncadeado atual = inicio; // do inicio
 			while (atual != null) { // até o final
 				// exibe a informação do nó
 				atual.display();;

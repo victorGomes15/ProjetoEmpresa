@@ -2,35 +2,28 @@ package br.com.contimatic.pilha;
 
 public class Pilha {
 
-	NoPIlha inicio, fim;
+	NoPIlha topo;
 	private int size;
 
 	public Pilha() {
-		this.inicio = null;
-		this.fim = null;
-		this.size = 0;
+		this.topo = null;
 	}
 
 	public void push(Integer dado) {
 		NoPIlha novo = new NoPIlha(dado);
-
-		if (isEmpty()) {
-			inicio = novo;
-			fim = inicio;
-		} else {
-			fim.setNext(novo);
-			fim = novo;
-		}
+		novo.setNext(topo);
+		topo = novo;
+		size++;
 	}
 
 	public boolean isEmpty() {
-		return (size == 0) ? true : false;
+		return size == 0 ? true : false;
 	}
 
 	public Integer pop() {
 		if (!isEmpty()) {
-			NoPIlha aux = fim;
-			fim = fim.getNext();
+			NoPIlha aux = topo;
+			topo = topo.getNext();
 			return aux.getDado();
 		}
 		return -1;
@@ -40,7 +33,7 @@ public class Pilha {
 		if (isEmpty()) {
 			System.out.println("Pilha vazia.");
 		} else {
-			NoPIlha atual = fim; // inicia do topo
+			NoPIlha atual = topo; // inicia do topo
 			while (atual != null) { // até do final
 				atual.displayNo(); // exibe a informação don
 				atual = atual.getNext(); // move para o proximo nó
