@@ -10,9 +10,9 @@ public class ListaOrdenada {
 		// pesquisar a posição do elemento
 		No atual = inicio, previo = null;
 		
-		while (atual != null && elem > atual.getDado()) {//looping pra descobrir onde o elemento vai ser maior que o dado ja cadastrado
+		while (atual != null && elem > (Integer)atual.getDado()) {//looping pra descobrir onde o elemento vai ser maior que o dado ja cadastrado
 			previo = atual;
-			atual = atual.getNext();
+			atual = (No) atual.getNext();
 		}
 		if (previo == null) { // insere no inicio da lista
 			novoNo.setNext(inicio);
@@ -33,13 +33,13 @@ public class ListaOrdenada {
 		}
 		// pesquisar a posição do elemento
 		No del = inicio, previo = null;
-		while (del != null && elem != del.getDado()) {
+		while (del != null && elem != (Integer)del.getDado()) {
 			previo = del;
-			del = del.getNext();
+			del = (No) del.getNext();
 		}
 		// se o elemento existir removê-lo
 		if (del == inicio) // a lista só tem um elemento
-			inicio = inicio.getNext();
+			inicio = (No) inicio.getNext();
 		else if (del != null)
 			previo.setNext(del.getNext()); // remove numa posição intermediária
 	}
@@ -59,7 +59,7 @@ public class ListaOrdenada {
 		for (int i = 0; i < this.size - 1; i++) {
 			builder.append(atual.getDado());
 			builder.append(", ");
-			atual = atual.getNext();
+			atual = (No) atual.getNext();
 		}
 
 		// último elemento

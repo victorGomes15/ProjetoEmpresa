@@ -35,7 +35,17 @@ public class Main {
 		lOrdenada.inserir(3);
 		lOrdenada.inserir(60);
 		System.out.println(lOrdenada);
-
+		
+		
+		System.out.println("Minha Lista Normal criada");
+		
+		ListaNum2 lis = new ListaNum2();
+		
+		lis.adcionaNoInicio(4);
+		lis.adcionaNoFim(5);
+		lis.adcionaNoInicio(7);
+		lis.adcionaEmQualquerPOsicao(1, 0);
+		System.out.println(lis);
 	}
 
 }

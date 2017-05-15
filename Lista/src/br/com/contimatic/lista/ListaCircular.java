@@ -56,7 +56,7 @@ public class ListaCircular {
 		for (int i = 0; i < this.totalDeElementos-1; i++) {
 			builder.append(atual.getDado());
 			builder.append(", ");
-			atual = atual.getNext();
+			atual = (No) atual.getNext();
 		}
 
 		// último elemento

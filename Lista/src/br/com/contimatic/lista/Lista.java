@@ -6,7 +6,7 @@ public class Lista {
 	private No fim;
 	private int totalDeElementos = 0;
 
-	public void adiciona(int elemento) {
+	public void adiciona(Integer elemento) {
 		if (this.totalDeElementos == 0) {
 			this.adicionaNoComeco(elemento);
 		} else {
@@ -21,19 +21,19 @@ public class Lista {
 		return posicao >= 0 && posicao < this.totalDeElementos;
 	}
 
-	private No pegaNo(int posicao) {
+	private No pegaNo(Integer posicao) {
 		if (!this.posicaoOcupada(posicao)) {
 			throw new IllegalArgumentException("Posição não existe");
 		}
 
 		No atual = inicio;
 		for (int i = 0; i < posicao; i++) {
-			atual = atual.getNext();
+			atual = (No) atual.getNext();
 		}
 		return atual;
 	}
 
-	public void adiciona(int posicao, int elemento) {
+	public void adiciona(Integer posicao, int elemento) {
 		if (posicao == 0) {
 			this.adicionaNoComeco(elemento);
 		} else if (posicao == this.totalDeElementos) {
@@ -41,7 +41,7 @@ public class Lista {
 		} else {
 			No anterior = this.pegaNo(posicao - 1);
 			No nova = new No(elemento);
-			No aux = anterior.getNext();
+			No aux = (No)anterior.getNext();
 			nova.setNext(aux);
 			anterior.setNext(nova);
 			this.totalDeElementos++;
@@ -59,8 +59,8 @@ public class Lista {
 		    this.removeDoFim();
 		  } else {
 		    No anterior = this.pegaNo(posicao - 1);
-		    No atual = anterior.getNext();
-		    No Next = atual.getNext();
+		    No atual = (No)anterior.getNext();
+		    No Next = (No)atual.getNext();
 		    
 		    anterior.setNext(Next);		    
 		    this.totalDeElementos--;
@@ -71,20 +71,20 @@ public class Lista {
 		return 0;
 	}
 
-	public boolean contem(int elemento) {
+	public boolean contem(Integer elemento) {
 		No aux = inicio;
 		
 		while(aux !=null){
 			if(aux.getDado()==elemento){
 				return true;
 			}
-			aux=aux.getNext();
+			aux=(No)aux.getNext();
 		}
 		
 		return false;
 	}
 
-	public void adicionaNoComeco(int elemento) {
+	public void adicionaNoComeco(Integer elemento) {
 		No nova = new No(elemento);
 		No aux = nova;
 		if (this.totalDeElementos == 0) {
@@ -104,7 +104,7 @@ public class Lista {
 		    throw new IllegalArgumentException("Posição não existe");
 		  }
 
-		  this.inicio = this.inicio.getNext();
+		  this.inicio = (No)this.inicio.getNext();
 		  this.totalDeElementos--;
 		  
 		  if (this.totalDeElementos == 0) {
@@ -140,7 +140,7 @@ public class Lista {
 		for (int i = 0; i < this.totalDeElementos - 1; i++) {
 			builder.append(atual.getDado());
 			builder.append(", ");
-			atual = atual.getNext();
+			atual = (No)atual.getNext();
 		}
 
 		// último elemento

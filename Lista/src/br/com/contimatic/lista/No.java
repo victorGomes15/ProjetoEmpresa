@@ -1,8 +1,8 @@
 package br.com.contimatic.lista;
 
-public  class No {
+public  class No  {
 
-	private int dado;
+	private Object dado;
 	private No next;
 
 	public No(int dado) {
@@ -10,20 +10,20 @@ public  class No {
 		this.next = null;
 	}
 
-	public int getDado() {
-		return dado;
+	public void setDado(Object dado) {
+		this.dado =dado;
 	}
 
-	public void setDado(int dado) {
-		this.dado = dado;
+	public Object getNext() {
+		return (No)this.next;
 	}
 
-	public No getNext() {
-		return next;
+	public void setNext(Object next) {
+		this.next=(No) next;
 	}
 
-	public void setNext(No next) {
-		this.next = next;
+	public Object getDado() {
+		return this.dado;
 	}
 
 }
