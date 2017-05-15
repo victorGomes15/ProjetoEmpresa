@@ -10,5 +10,7 @@ public class Main {
 		pilha.push(40);
 
 		pilha.mostra();
+		pilha.pop();
+		pilha.mostra();
 	}
 }

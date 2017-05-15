@@ -13,6 +13,19 @@ public class Main {
 		fila.display();
 		fila.dequeue();
 		fila.display();
+		
+		System.out.println("Minha Fila");
+		
+		minhaFila fila2 = new minhaFila();
+		fila2.enqueue(1);
+		fila2.enqueue(10);
+		fila2.enqueue(100);
+		fila2.enqueue(1000);
+		fila2.display();
+		fila2.dequeue();
+		fila2.dequeue();
+		fila2.display();
+		
 	}
 
 }
