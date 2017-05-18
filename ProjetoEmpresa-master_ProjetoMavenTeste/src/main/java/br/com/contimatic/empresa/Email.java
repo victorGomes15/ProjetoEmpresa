@@ -3,6 +3,10 @@ package br.com.contimatic.empresa;
 import static com.google.common.base.Preconditions.checkArgument;
 import static org.apache.commons.lang3.StringUtils.isNotEmpty;
 
+import org.apache.commons.lang.builder.HashCodeBuilder;
+import org.apache.commons.lang.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+
 public class Email {
 
 	private String enderecoEmail;
@@ -19,19 +23,15 @@ public class Email {
 				contArroba++;
 			}
 		}
-		if (contArroba == 1 && !(enderecoEmail.charAt(enderecoEmail.length() - 1) == '.')) {
-			if (!(enderecoEmail.charAt(0) == '@') && !(enderecoEmail.indexOf("@") == enderecoEmail.length() - 1)) {
-				this.enderecoEmail = enderecoEmail;
-			}
-		}
+		checkArgument(contArroba == 1 && !(enderecoEmail.charAt(enderecoEmail.length() - 1) == '.'), "Email incorreto");
+		checkArgument(!(enderecoEmail.charAt(0) == '@') && !(enderecoEmail.indexOf("@") == enderecoEmail.length() - 1),
+				"Email não pode começar ou terminar com @");
+		this.enderecoEmail = enderecoEmail;
 	}
 
 	@Override
 	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((enderecoEmail == null) ? 0 : enderecoEmail.hashCode());
-		return result;
+		return new HashCodeBuilder(1, 3).append(this.enderecoEmail).toHashCode();
 	}
 
 	@Override
@@ -42,18 +42,16 @@ public class Email {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
+
 		Email other = (Email) obj;
-		if (enderecoEmail == null) {
-			if (other.enderecoEmail != null)
-				return false;
-		} else if (!enderecoEmail.equals(other.enderecoEmail))
-			return false;
-		return true;
+
+		return new EqualsBuilder().append(this.enderecoEmail, other.enderecoEmail).isEquals();
+
 	}
 
 	@Override
 	public String toString() {
-		return "Email: " + this.enderecoEmail;
+		return new ToStringBuilder(this).append("Email:", this.enderecoEmail).toString();
 	}
 
 }

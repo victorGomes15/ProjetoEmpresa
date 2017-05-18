@@ -3,6 +3,8 @@ package br.com.contimatic.empresa;
 import static com.google.common.base.Preconditions.checkArgument;
 import static org.apache.commons.lang3.StringUtils.isNotEmpty;
 
+import org.apache.commons.lang.builder.EqualsBuilder;
+
 public class Cidade {
 
 	private Integer codigo;
@@ -17,6 +19,7 @@ public class Cidade {
 	}
 
 	public void setCodigo(Integer codigo) {
+		checkArgument(codigo > 0, "Código deve ser maior que 0");
 		this.codigo = codigo;
 	}
 
@@ -48,12 +51,9 @@ public class Cidade {
 		if (getClass() != obj.getClass())
 			return false;
 		Cidade other = (Cidade) obj;
-		if (codigo == null) {
-			if (other.codigo != null)
-				return false;
-		} else if (!codigo.equals(other.codigo))
-			return false;
-		return true;
+
+		return new EqualsBuilder().append(this.codigo, other.codigo).append(this.nome, other.nome)
+				.append(this.bairro, other.bairro).isEquals();
 	}
 
 	@Override

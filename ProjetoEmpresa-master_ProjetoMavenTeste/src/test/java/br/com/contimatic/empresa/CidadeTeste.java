@@ -37,19 +37,19 @@ public class CidadeTeste {
 	}
 	
 
-	@Test
+	@Test(expected= IllegalArgumentException.class)
 	public void nao_deve_aceitar_um_nome_nulo() {
 		cidade.setNome(null);
 		Assert.assertNull(cidade.getNome());
 	}
 
-	@Test
+	@Test(expected= IllegalArgumentException.class)
 	public void nao_deve_aceitar_um_nome_vazio() {
 		cidade.setNome("");
 		Assert.assertNull(cidade.getNome());
 	}
 
-	@Test
+	@Test(expected= IllegalArgumentException.class)
 	public void nao_deve_aceitar_um_nome_com_menos_de_3_caracteres() {
 		cidade.setNome("It");
 		Assert.assertNull(cidade.getNome());
@@ -71,7 +71,7 @@ public class CidadeTeste {
 		Assert.assertNotNull(cidade.getBairro());
 	}
 
-	@Test
+	@Test(expected= IllegalArgumentException.class)
 	public void nao_deve_aceitar_um_bairro_invalido() {
 		Bairro bairro = new Bairro();
 		bairro.setCodigo(0);

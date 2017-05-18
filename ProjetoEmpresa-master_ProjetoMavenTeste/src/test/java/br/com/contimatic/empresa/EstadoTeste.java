@@ -8,35 +8,35 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class EstadoTeste {
-	
+
 	private Estado estado = new Estado();
-	
+
 	@BeforeClass
-    public static void setUpClass() {
-		System.out.println("Começo dos testes da classe "+EstadoTeste.class.getSimpleName()+"\n");
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    	System.out.println("Fim dos testes da classe "+EstadoTeste.class.getSimpleName()+"\n");
-    }
+	public static void setUpClass() {
+		System.out.println("Começo dos testes da classe " + EstadoTeste.class.getSimpleName() + "\n");
+	}
+
+	@AfterClass
+	public static void tearDownClass() {
+		System.out.println("Fim dos testes da classe " + EstadoTeste.class.getSimpleName() + "\n");
+	}
 
 	@Before
 	public void criar_objeto() {
 		estado = new Estado();
 		System.out.println("Começo do teste ");
 	}
-	
+
 	@After
 	public void finalizacao_Teste() {
-		System.out.println("Fim de teste");;
+		System.out.println("Fim de teste");
+		;
 	}
-	
 
-	@Test
+	@Test(expected = IllegalArgumentException.class)
 	public void nao_deve_aceitar_um_codigo_igual_a_0() {
 		estado.setCod(0);
-		Assert.assertEquals(0, estado.getCod());
+		Assert.assertEquals(null, estado.getCod());
 	}
 
 	@Test

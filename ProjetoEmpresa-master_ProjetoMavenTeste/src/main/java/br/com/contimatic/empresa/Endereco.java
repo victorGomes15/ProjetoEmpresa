@@ -3,6 +3,8 @@ package br.com.contimatic.empresa;
 import static com.google.common.base.Preconditions.checkArgument;
 import static org.apache.commons.lang3.StringUtils.isNotEmpty;
 
+import org.apache.commons.lang.builder.EqualsBuilder;
+
 public class Endereco {
 
 	private String rua;
@@ -70,12 +72,9 @@ public class Endereco {
 		if (getClass() != obj.getClass())
 			return false;
 		Endereco other = (Endereco) obj;
-		if (rua == null) {
-			if (other.rua != null)
-				return false;
-		} else if (!rua.equals(other.rua))
-			return false;
-		return true;
+
+		return new EqualsBuilder().append(this.rua, other.rua).append(this.numero, other.numero)
+				.append(this.complemento, this.complemento).append(this.estado, other.estado).isEquals();
 	}
 
 }

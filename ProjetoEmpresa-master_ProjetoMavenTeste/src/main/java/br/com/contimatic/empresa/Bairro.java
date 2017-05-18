@@ -3,6 +3,10 @@ package br.com.contimatic.empresa;
 import static com.google.common.base.Preconditions.checkArgument;
 import static org.apache.commons.lang3.StringUtils.isNotEmpty;
 
+import org.apache.commons.lang.builder.EqualsBuilder;
+import org.apache.commons.lang.builder.HashCodeBuilder;
+import org.apache.commons.lang.builder.ToStringBuilder;
+
 public class Bairro {
 
 	private Integer codigo;
@@ -45,25 +49,21 @@ public class Bairro {
 		if (getClass() != obj.getClass())
 			return false;
 		Bairro other = (Bairro) obj;
-		if (codigo == null) {
-			if (other.codigo != null)
-				return false;
-		} else if (!codigo.equals(other.codigo))
-			return false;
-		return true;
+
+		return new EqualsBuilder().append(this.codigo, other.codigo).append(this.cep, other.cep)
+				.append(this.nomeBairro, other.nomeBairro).isEquals();
+
 	}
 
 	@Override
 	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((codigo == null) ? 0 : codigo.hashCode());
-		return result;
+		return new HashCodeBuilder(11, 21).append(this.codigo).append(this.cep).append(this.nomeBairro).toHashCode();
 	}
 
 	@Override
 	public String toString() {
-		return "Cod Bairro: " + this.codigo + "\nBairro: " + this.nomeBairro + "\nCep: " + this.cep;
+		return new ToStringBuilder(this).append("Cod Bairro", this.codigo).append("\nBairro ", this.nomeBairro)
+				.append("\nCep", this.cep).toString();
 	}
 
 }

@@ -5,18 +5,19 @@ import static org.apache.commons.lang3.StringUtils.isNotEmpty;
 
 public class Estado {
 
-	private int cod;
+	private Integer cod;
 	private String uf;
 	private Cidade cidade;
 
 	public Estado() {
 	}
 
-	public int getCod() {
+	public Integer getCod() {
 		return cod;
 	}
 
-	public void setCod(int cod) {
+	public void setCod(Integer cod) {
+		checkArgument(cod > 0, "Código tem que ser maior que 0");
 		this.cod = cod;
 	}
 
@@ -35,9 +36,9 @@ public class Estado {
 
 	public void setCidade(Cidade cidade) {
 		if (cidade != null) {
-			if (cidade.getCodigo() != 0 && !cidade.getBairro().equals(null) && !cidade.getNome().equals(null)) {
-				this.cidade = cidade;
-			}
+			checkArgument(!(cidade.getCodigo().equals(0)) && !cidade.getBairro().equals(null)
+					&& !cidade.getNome().equals(null));
+			this.cidade = cidade;
 		}
 	}
 
