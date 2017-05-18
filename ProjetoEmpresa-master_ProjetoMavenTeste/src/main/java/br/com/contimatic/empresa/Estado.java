@@ -38,15 +38,32 @@ public class Estado {
 
 	public void setCidade(Cidade cidade) {
 		if (cidade !=null) {
-			if (cidade.getCodigo() != 0 && cidade.getBairro() != null && cidade.getNome() != null) {
+			if (cidade.getCodigo() != 0 && !cidade.getBairro().equals(null) && !cidade.getNome().equals(null)) {
 				this.cidade = cidade;
 			}
 		}
 	}
 	
 	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Estado other = (Estado) obj;
+		if (cod != other.cod)
+			return false;
+		return true;
+	}
+
+	@Override
 	public int hashCode() {
-		return this.cod;
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + cod;
+		return result;
 	}
 	
 	@Override

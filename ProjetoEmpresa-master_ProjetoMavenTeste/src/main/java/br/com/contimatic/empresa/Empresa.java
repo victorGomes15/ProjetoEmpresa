@@ -1,8 +1,8 @@
 package br.com.contimatic.empresa;
 
-import java.util.Arrays;
+import java.util.Date;
 
-import javax.xml.crypto.Data;
+import org.joda.time.DateTime;
 
 public class Empresa {
 
@@ -15,7 +15,7 @@ public class Empresa {
 	private Email email;
 	private String inscricaoEstadual;
 	private String nomeEmpresa;
-	private Data dataCriacao;
+	private DateTime dataCriacao;
 
 	public Empresa() {
 		this.telefone = new Telefone[5];
@@ -90,12 +90,15 @@ public class Empresa {
 		}
 	}
 
-	public Data getDataCriacao() {
+	public DateTime getDataCriacao() {
 		return dataCriacao;
 	}
 
-	public void setDataCriacao(Data dataCriacao) {
-		this.dataCriacao = dataCriacao;
+	public void setDataCriacao(DateTime dataCriacao) {
+		Date dataAtual = new Date(System.currentTimeMillis());
+		if (dataCriacao.isAfterNow() || dataCriacao.equals(dataAtual)) {
+			this.dataCriacao = dataCriacao;
+		}
 	}
 
 	public String getInscricaoEstadual() {
@@ -124,11 +127,11 @@ public class Empresa {
 		}
 	}
 
+	@Override
 	public String toString() {
-		return "\n\t Dados Empresa:\n" + "cnpj: " + this.cnpj + "\tRazão social: " + this.razaoSocial
-				+ "\nNome empresa: " + this.nomeEmpresa + "\tInscrição social: " + this.inscricaoEstadual + "\nDono: "
-				+ this.dono + "\n\t Email:\n" + this.email + "\n\t Endereço:\n" + this.endereco + "\n\t Telefones:\n"
-				+ Arrays.toString(telefone);
+		return "Empresa [cnpj=" + cnpj + ", razaoSocial=" + razaoSocial + ", endereco=" + endereco + ", telefone="
+				+ ", email=" + email + ", inscricaoEstadual=" + inscricaoEstadual + ", nomeEmpresa=" + nomeEmpresa
+				+ ", dataCriacao=" + dataCriacao + "]";
 	}
 
 }

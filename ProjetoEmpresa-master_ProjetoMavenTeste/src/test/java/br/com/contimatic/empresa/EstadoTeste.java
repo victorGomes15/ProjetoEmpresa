@@ -76,7 +76,7 @@ public class EstadoTeste {
 		cidade.setNome(null);
 		Bairro bairro = new Bairro();
 		bairro.setCodigo(1);
-		bairro.setNomeBairro("Jardim Ibirapuera");
+		bairro.setNomeBairro("");
 		cidade.setBairro(bairro);
 		estado.setCidade(cidade);
 		Assert.assertNull(estado.getCidade());

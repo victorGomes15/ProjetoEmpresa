@@ -1,5 +1,11 @@
 package br.com.contimatic.empresa;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
+
+import org.joda.time.DateTime;
+import org.joda.time.format.DateTimeFormat;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -187,6 +193,19 @@ public class EmpresaTeste {
 	public void nao_deve_aceitar_um_nome_de_empresa_vazia() {
 		empresa.setRazaoSocial("");
 		Assert.assertNull(empresa.getRazaoSocial());
+	}
+	
+	@Test
+	public void deve_aceitar_uma_data_de_criaçao() throws ParseException {
+		org.joda.time.format.DateTimeFormatter formatter= DateTimeFormat.forPattern("dd/MM/yyyy HH:mm:ss");
+		String data ="13/05/2017";
+		empresa.setDataCriacao(formatter.parseDateTime(data));
+		Assert.assertNotNull(empresa.getDataCriacao());
+	}
+	
+	@Test
+	public void nao_deve_aceitar_uma_data_de_criaçao_invalida() {
+		Assert.assertNull(empresa.getDataCriacao());
 	}
 	
 	@Ignore

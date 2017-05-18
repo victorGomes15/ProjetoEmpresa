@@ -9,28 +9,49 @@ public class Email {
 	}
 
 	public void setEnderecoEmail(String enderecoEmail) {
-		if (enderecoEmail != null) {
-			if (!enderecoEmail.isEmpty()) {
-				int contArroba = 0;
-				for (int i = 0; i < enderecoEmail.length(); i++) {
-					if (enderecoEmail.charAt(i) == '@') {
-						contArroba++;
-					}
+		if (enderecoEmail!=null && !enderecoEmail.isEmpty()) {
+			int contArroba = 0;
+			for (int i = 0; i < enderecoEmail.length(); i++) {
+				if (enderecoEmail.charAt(i) == '@') {
+					contArroba++;
 				}
-				if (contArroba == 1 && !(enderecoEmail.charAt(enderecoEmail.length() - 1) == '.')) {
-					if (!(enderecoEmail.charAt(0) == '@')) {
-						if (!(enderecoEmail.indexOf("@") == enderecoEmail.length() - 1)) {
-							this.enderecoEmail = enderecoEmail;
-						}
-					}
+			}
+			if (contArroba == 1 && !(enderecoEmail.charAt(enderecoEmail.length() - 1) == '.')) {
+				if (!(enderecoEmail.charAt(0) == '@') && !(enderecoEmail.indexOf("@") == enderecoEmail.length() - 1)) {
+					this.enderecoEmail = enderecoEmail;
 				}
 			}
 		}
 	}
 
 	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((enderecoEmail == null) ? 0 : enderecoEmail.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Email other = (Email) obj;
+		if (enderecoEmail == null) {
+			if (other.enderecoEmail != null)
+				return false;
+		} else if (!enderecoEmail.equals(other.enderecoEmail))
+			return false;
+		return true;
+	}
+
+	@Override
 	public String toString() {
-		return "Email: "+this.enderecoEmail;
+		return "Email: " + this.enderecoEmail;
 	}
 
 }

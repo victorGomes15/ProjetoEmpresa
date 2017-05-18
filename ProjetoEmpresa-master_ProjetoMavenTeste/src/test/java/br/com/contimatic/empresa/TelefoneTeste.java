@@ -34,7 +34,7 @@ public class TelefoneTeste {
 		System.out.println("Fim de teste");
 	}
 
-	@Test
+	@Test(expected= IllegalArgumentException.class)
 	public void nao_deve_aceitar_ddd_menor_que_11() {
 		telefone.setDdd(10);
 		Assert.assertNull(telefone.getDdd());
@@ -84,7 +84,7 @@ public class TelefoneTeste {
 
 	@Test
 	public void deve_aceitar_um_Tipo_que_seja_celular_ou_fixo() {
-		telefone.setTipo("FiXo");
+		telefone.setTipo("Fixo");
 		Assert.assertNotNull(telefone.getTipo());
 	}
 

@@ -38,7 +38,8 @@ public class EmailTeste {
 
 	@Test
 	public void nao_deve_aceitar_um_endereco_de_email_nulo() {
-		email.setEnderecoEmail(null);
+		email.setEnderecoEmail(null);;
+		System.out.println(email.getEnderecoEmail());
 		Assert.assertNull(email.getEnderecoEmail());
 	}
 

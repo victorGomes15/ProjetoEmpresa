@@ -1,5 +1,8 @@
 package br.com.contimatic.empresa;
 
+import static com.google.common.base.Preconditions.checkArgument;
+import static org.apache.commons.lang3.StringUtils.isNotEmpty;
+
 public class Bairro {
 
 	private Integer codigo;
@@ -11,9 +14,8 @@ public class Bairro {
 	}
 
 	public void setCodigo(int codigo) {
-		if (codigo > 0) {
-			this.codigo = codigo;
-		}
+		checkArgument(codigo > 0, "Código inserido menor ou igual a 0");
+		this.codigo = codigo;
 	}
 
 	public String getNomeBairro() {
@@ -21,9 +23,8 @@ public class Bairro {
 	}
 
 	public void setNomeBairro(String nomeBairro) {
-		if (nomeBairro != null && !nomeBairro.equals("") && nomeBairro.length() > 3) {
-			this.nomeBairro = nomeBairro;
-		}
+		checkArgument(isNotEmpty(nomeBairro) && nomeBairro.length() > 3, "Nome de bairro incorreto");
+		this.nomeBairro = nomeBairro;
 	}
 
 	public String getCep() {
@@ -31,18 +32,35 @@ public class Bairro {
 	}
 
 	public void setCep(String cep) {
-		if (cep != null) {
-			if (cep.matches("^\\d{5}-\\d{3}$")) {
-				this.cep = cep;
-			}
-		}
+		checkArgument(isNotEmpty(cep) && cep.matches("^\\d{5}-\\d{3}$"), "Cep inváldo");
+		this.cep = cep;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Bairro other = (Bairro) obj;
+		if (codigo == null) {
+			if (other.codigo != null)
+				return false;
+		} else if (!codigo.equals(other.codigo))
+			return false;
+		return true;
 	}
 
 	@Override
 	public int hashCode() {
-		return this.codigo;
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((codigo == null) ? 0 : codigo.hashCode());
+		return result;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "Cod Bairro: " + this.codigo + "\nBairro: " + this.nomeBairro + "\nCep: " + this.cep;

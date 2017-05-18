@@ -66,6 +66,7 @@ public class CidadeTeste {
 		Bairro bairro = new Bairro();
 		bairro.setCodigo(1);
 		bairro.setNomeBairro("Jardim");
+		bairro.setCep("05857-380");
 		cidade.setBairro(bairro);
 		Assert.assertNotNull(cidade.getBairro());
 	}

@@ -1,5 +1,10 @@
 package br.com.contimatic.empresa;
 
+import static br.com.contimatic.empresa.TelefoneType.CELULAR;
+import static br.com.contimatic.empresa.TelefoneType.FIXO;
+import static com.google.common.base.Preconditions.checkArgument;
+import static org.apache.commons.lang3.StringUtils.isNotEmpty;
+
 public class Telefone {
 
 	private Integer ddd;
@@ -14,9 +19,8 @@ public class Telefone {
 	}
 
 	public void setDdd(Integer dd) {
-		if (dd > 10 & dd < 100) {
-			this.ddd = dd;
-		}
+		checkArgument(dd > 10 && dd < 100, "DDD valor incorreto");
+		this.ddd = dd;
 	}
 
 	public String getNumero() {
@@ -24,13 +28,11 @@ public class Telefone {
 	}
 
 	public void setNumero(String numero) {
-		if (numero != null) {
-			if (numero.length() >= 8 && numero.length() <= 9) {
-				if (numero.matches("[0-9]+")) {
-					this.numero = numero;
-				}
-			}
-		}
+		checkArgument(isNotEmpty(numero), "Número nulo ou vazio");
+		checkArgument(numero.length() == CELULAR.getTamanho() || numero.length() == FIXO.getTamanho(),
+				"Número digitos inválido");
+		checkArgument(numero.matches("[0-9]+"), "Campo só deve conter números");
+		this.numero = numero;
 	}
 
 	public String getTipo() {
@@ -38,22 +40,38 @@ public class Telefone {
 	}
 
 	public void setTipo(String tipo) {
-		if (tipo != null) {
-			if (!tipo.isEmpty()) {
-				if (tipo.equalsIgnoreCase("fixo") || tipo.equalsIgnoreCase("celular")) {
-					this.tipo = tipo;
-				}
-			}
-		}
+		checkArgument(isNotEmpty(tipo), "Tipo nulo ou vazio");
+		checkArgument(tipo.equals(CELULAR.getDescricao()) || tipo.equals(FIXO.getDescricao()), "Tipo incorreto");
+		this.tipo = tipo;
 	}
-	
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Telefone other = (Telefone) obj;
+		if (ddd == null) {
+			if (other.ddd != null)
+				return false;
+		} else if (!ddd.equals(other.ddd))
+			return false;
+		return true;
+	}
+
 	@Override
 	public int hashCode() {
-		return this.ddd;
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((ddd == null) ? 0 : ddd.hashCode());
+		return result;
 	}
 
 	@Override
 	public String toString() {
-		return "Ddd: "+this.ddd+"\nNumero: "+this.numero+"\nTipo: "+this.tipo;
+		return "Ddd: " + this.ddd + "\nNumero: " + this.numero + "\nTipo: " + this.tipo;
 	}
 }
