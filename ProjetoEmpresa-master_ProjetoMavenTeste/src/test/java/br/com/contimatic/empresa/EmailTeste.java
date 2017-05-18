@@ -8,51 +8,64 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import br.com.contimatic.empresa.Email;
+import br.com.six2six.fixturefactory.Fixture;
+import br.com.six2six.fixturefactory.Rule;
 
 public class EmailTeste {
 
 	private Email email;
-	
+
 	@BeforeClass
-    public static void setUpClass() {
-		System.out.println("Começo dos testes da classe "+EmailTeste.class.getSimpleName()+"\n");
-	
+	public static void setUpClass() {
+		System.out.println("Começo dos testes da classe " + EmailTeste.class.getSimpleName() + "\n");
+
+		Fixture.of(Email.class).addTemplate("valido", new Rule() {
+			{
+				add("enderecoEmail", random("victor@gmail.com", "victor@gmail.com.br", "Josevictor@gmail.com"));
+			}
+		});
+
+		Fixture.of(Email.class).addTemplate("invalido", new Rule() {
+			{
+				add("enderecoEmail", random("@gmail.com", "victor@gmail.com.br.", "Jose@victor@gmail.com"));
+			}
+		});
+
 	}
-    
-    @AfterClass
-    public static void tearDownClass() {
-    	System.out.println("Fim dos testes da classe "+EmailTeste.class.getSimpleName()+"\n");
-    }
+
+	@AfterClass
+	public static void tearDownClass() {
+		System.out.println("Fim dos testes da classe " + EmailTeste.class.getSimpleName() + "\n");
+	}
 
 	@Before
 	public void cria_objt() {
 		email = new Email();
 		System.out.println("Começo do teste ");
 	}
-	
+
 	@After
 	public void finalizacao_Teste() {
-		System.out.println("Fim de teste");;
+		System.out.println("Fim de teste");
 	}
-	
 
 	@Test
 	public void nao_deve_aceitar_um_endereco_de_email_nulo() {
-		email.setEnderecoEmail(null);;
+		email.setEnderecoEmail(null);
 		System.out.println(email.getEnderecoEmail());
 		Assert.assertNull(email.getEnderecoEmail());
 	}
 
-	@Test
+	@Test(expected = IllegalArgumentException.class)
 	public void nao_deve_aceitar_um_endereco_de_email_vazio() {
-		email.setEnderecoEmail("");
-		Assert.assertNull(email.getEnderecoEmail());
+		Email email2 = Fixture.from(Email.class).gimme("invalido");
+		Assert.assertNull(email2.getEnderecoEmail());
 	}
 
 	@Test
 	public void nao_deve_aceitar_um_endereco_de_email_com_mais_de_1_arroba() {
-		email.setEnderecoEmail("joao@gmail@.com.br");
-		Assert.assertNull(email.getEnderecoEmail());
+		Email email2 = Fixture.from(Email.class).gimme("valido");
+		Assert.assertNull(email2.getEnderecoEmail());
 	}
 
 	@Test
