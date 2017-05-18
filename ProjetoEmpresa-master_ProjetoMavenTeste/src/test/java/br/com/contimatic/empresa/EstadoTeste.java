@@ -39,37 +39,37 @@ public class EstadoTeste {
 		Assert.assertEquals(null, estado.getCod());
 	}
 
-	@Test
+	@Test(expected= IllegalArgumentException.class)
 	public void nao_deve_aceitar_uma_uf_nula() {
 		estado.setUf(null);
 		Assert.assertNull(estado.getUf());
 	}
 
-	@Test
+	@Test(expected= IllegalArgumentException.class)
 	public void nao_deve_aceitar_uma_uf_vazia() {
 		estado.setUf("");
 		Assert.assertNull(estado.getUf());
 	}
 
-	@Test
+	@Test(expected= IllegalArgumentException.class)
 	public void nao_deve_aceitar_uma_uf_com_mais_de_2_caracteres() {
 		estado.setUf("paraiba");
 		Assert.assertNull(estado.getUf());
 	}
 
-	@Test
+	@Test(expected= IllegalArgumentException.class)
 	public void nao_deve_aceitar_uma_uf_com_menos_de_2_caracteres() {
 		estado.setUf("u");
 		Assert.assertNull(estado.getUf());
 	}
 
 	@Test
-	public void nao_deve_aceitar_uma_uf_com_2_caracteres() {
+	public void deve_aceitar_uma_uf_com_2_caracteres() {
 		estado.setUf("df");
 		Assert.assertNotNull(estado.getUf());
 	}
 
-	@Test
+	@Test(expected= IllegalArgumentException.class)
 	public void nao_deve_aceitar_uma_cidade_invalida() {
 		Cidade cidade = new Cidade();
 		cidade.setCodigo(-1);

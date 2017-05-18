@@ -4,6 +4,8 @@ import static com.google.common.base.Preconditions.checkArgument;
 import static org.apache.commons.lang3.StringUtils.isNotEmpty;
 
 import org.apache.commons.lang.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 public class Cidade {
 
@@ -37,9 +39,9 @@ public class Cidade {
 	}
 
 	public void setBairro(Bairro bairro) {
-		if (bairro != null && bairro.getNomeBairro() != null && bairro.getCodigo() > 0) {
-			this.bairro = bairro;
-		}
+		checkArgument(bairro != null,"Bairro nulo");
+		checkArgument(!bairro.getNomeBairro().equals(null) && bairro.getCodigo() > 0,"Nome do bairro ou código invalido");
+		this.bairro = bairro;
 	}
 
 	@Override
@@ -58,15 +60,13 @@ public class Cidade {
 
 	@Override
 	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((codigo == null) ? 0 : codigo.hashCode());
-		return result;
+		return new HashCodeBuilder(1,3).append(this.codigo).append(this.nome).append(this.bairro).toHashCode();
 	}
 
 	@Override
 	public String toString() {
-		return "Cod cidade: " + this.codigo + "\nCidade: " + this.nome + "\n" + this.bairro;
+		return new ToStringBuilder(this).append("Cod cidade: ", this.codigo).append("Cidade: ", this.nome)
+				.append("Bairro:\n ", this.bairro).toString();
 	}
 
 }

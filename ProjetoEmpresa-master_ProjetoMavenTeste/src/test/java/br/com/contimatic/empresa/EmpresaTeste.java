@@ -1,10 +1,7 @@
 package br.com.contimatic.empresa;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.format.DateTimeFormatter;
 
-import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -15,9 +12,6 @@ import org.junit.FixMethodOrder;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
-
-import br.com.contimatic.empresa.Empresa;
-import br.com.contimatic.empresa.Telefone;
 
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)

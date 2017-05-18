@@ -9,7 +9,7 @@ public class Telefone {
 
 	private Integer ddd;
 	private String numero;
-	private String tipo;
+	private TelefoneType tipo;
 
 	public Telefone() {
 	}
@@ -35,12 +35,11 @@ public class Telefone {
 		this.numero = numero;
 	}
 
-	public String getTipo() {
+	public TelefoneType getTipo() {
 		return tipo;
 	}
 
-	public void setTipo(String tipo) {
-		checkArgument(isNotEmpty(tipo), "Tipo nulo ou vazio");
+	public void setTipo(TelefoneType tipo) {
 		checkArgument(tipo.equals(CELULAR.getDescricao()) || tipo.equals(FIXO.getDescricao()), "Tipo incorreto");
 		this.tipo = tipo;
 	}

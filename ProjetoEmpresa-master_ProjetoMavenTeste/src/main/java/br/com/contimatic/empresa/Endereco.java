@@ -4,6 +4,8 @@ import static com.google.common.base.Preconditions.checkArgument;
 import static org.apache.commons.lang3.StringUtils.isNotEmpty;
 
 import org.apache.commons.lang.builder.EqualsBuilder;
+import org.apache.commons.lang.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 public class Endereco {
 
@@ -52,15 +54,15 @@ public class Endereco {
 
 	@Override
 	public String toString() {
-		return "\nRua: " + this.rua + "\nNúmero: " + this.numero + "\nComplemento: " + this.complemento + this.estado;
+		return new ToStringBuilder(this).append("Rua: ", this.rua).append("\nNúmero: ", this.numero)
+				.append("Complemento: ", this.complemento).append("Estado: ", this.estado).toString();
+
 	}
 
 	@Override
 	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((rua == null) ? 0 : rua.hashCode());
-		return result;
+		return new HashCodeBuilder(1, 3).append(this.rua).append(this.numero).append(this.estado)
+				.append(this.complemento).hashCode();
 	}
 
 	@Override

@@ -3,6 +3,10 @@ package br.com.contimatic.empresa;
 import static com.google.common.base.Preconditions.checkArgument;
 import static org.apache.commons.lang3.StringUtils.isNotEmpty;
 
+import org.apache.commons.lang.builder.EqualsBuilder;
+import org.apache.commons.lang.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+
 public class Estado {
 
 	private Integer cod;
@@ -35,11 +39,11 @@ public class Estado {
 	}
 
 	public void setCidade(Cidade cidade) {
-		if (cidade != null) {
-			checkArgument(!(cidade.getCodigo().equals(0)) && !cidade.getBairro().equals(null)
-					&& !cidade.getNome().equals(null));
-			this.cidade = cidade;
-		}
+		checkArgument(cidade != null, "Cidade nula");
+		checkArgument(
+				!(cidade.getCodigo().equals(0)) && !cidade.getBairro().equals(null) && !cidade.getNome().equals(null),
+				"Cidade invalida");
+		this.cidade = cidade;
 	}
 
 	@Override
@@ -51,22 +55,20 @@ public class Estado {
 		if (getClass() != obj.getClass())
 			return false;
 		Estado other = (Estado) obj;
-		if (cod != other.cod)
-			return false;
-		return true;
+
+		return new EqualsBuilder().append(this.cod, other.cod).append(this.uf, other.uf)
+				.append(this.cidade, other.cidade).isEquals();
 	}
 
 	@Override
 	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + cod;
-		return result;
+		return new HashCodeBuilder(1, 3).append(this.uf).append(this.cod).append(this.cidade).hashCode();
 	}
 
 	@Override
 	public String toString() {
-		return "Cod Estado: " + this.cod + "\nUf: " + this.uf + "\n" + this.cidade;
+		return new ToStringBuilder(this).append("Cod Estado: ", this.cod).append("\nUF: ", this.uf)
+				.append("\nCidade: \n", this.cidade).toString();
 	}
 
 }

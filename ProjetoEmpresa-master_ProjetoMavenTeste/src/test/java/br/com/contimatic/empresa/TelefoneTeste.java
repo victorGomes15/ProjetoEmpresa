@@ -34,7 +34,7 @@ public class TelefoneTeste {
 		System.out.println("Fim de teste");
 	}
 
-	@Test(expected= IllegalArgumentException.class)
+	@Test(expected = IllegalArgumentException.class)
 	public void nao_deve_aceitar_ddd_menor_que_11() {
 		telefone.setDdd(10);
 		Assert.assertNull(telefone.getDdd());
@@ -84,13 +84,15 @@ public class TelefoneTeste {
 
 	@Test
 	public void deve_aceitar_um_Tipo_que_seja_celular_ou_fixo() {
-		telefone.setTipo("Fixo");
+		String x = "Fixo";
+		telefone.setTipo(TelefoneType.valueOf(x));
 		Assert.assertNotNull(telefone.getTipo());
 	}
 
 	@Test
 	public void nao_deve_aceitar_um_Tipo_vazio() {
-		telefone.setTipo("");
+		String x = "";
+		telefone.setTipo(TelefoneType.valueOf(x));
 		Assert.assertNull(telefone.getTipo());
 	}
 
@@ -102,19 +104,22 @@ public class TelefoneTeste {
 
 	@Test
 	public void nao_deve_aceitar_um_Tipo_com_numero() {
-		telefone.setTipo("Celular1");
+		String x = "fdf4";
+		telefone.setTipo(TelefoneType.valueOf(x));
 		Assert.assertNull(telefone.getTipo());
 	}
 
 	@Test
 	public void nao_deve_aceitar_um_Tipo_diferente_de_celular_ou_fixo() {
-		telefone.setTipo("comercio");
+		String x = "comercial";
+		telefone.setTipo(TelefoneType.valueOf(x));
 		Assert.assertNull(telefone.getTipo());
 	}
 
 	@Test
 	public void deve_aceitar_um_Tipo_que_seja_igual_celular_ou_fixo() {
-		telefone.setTipo("FiXo");
+		String x = "Fixo";
+		telefone.setTipo(TelefoneType.valueOf(x));
 		Assert.assertEquals("FiXo", telefone.getTipo());
 	}
 

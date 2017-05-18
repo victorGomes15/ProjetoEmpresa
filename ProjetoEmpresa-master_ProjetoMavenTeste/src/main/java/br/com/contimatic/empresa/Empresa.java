@@ -1,8 +1,13 @@
 package br.com.contimatic.empresa;
 
-import java.util.Date;
 import static com.google.common.base.Preconditions.checkArgument;
 import static org.apache.commons.lang3.StringUtils.isNotEmpty;
+
+import java.util.Date;
+import java.util.Set;
+
+import org.apache.commons.lang.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.joda.time.DateTime;
 
 public class Empresa {
@@ -10,8 +15,7 @@ public class Empresa {
 	private String cnpj;
 	private String razaoSocial;
 	private Endereco endereco;
-	private Telefone telefone[];
-	private int tamanhoListaTelefone;
+	private Set<Telefone> telefone;
 	private String dono;
 	private Email email;
 	private String inscricaoEstadual;
@@ -19,7 +23,6 @@ public class Empresa {
 	private DateTime dataCriacao;
 
 	public Empresa() {
-		this.telefone = new Telefone[5];
 
 	}
 
@@ -54,17 +57,22 @@ public class Empresa {
 		}
 	}
 
-	public Telefone[] getTelefone() {
+
+
+	// public void setTelefone(Telefone telefone) {
+	// if (telefone.getDdd() > 0 && telefone.getNumero() != null &&
+	// telefone.getTipo() != null) {
+	// this.telefone[tamanhoListaTelefone] = telefone;
+	// this.tamanhoListaTelefone++;
+	// }
+	// }
+
+	public Set<Telefone> getTelefone() {
 		return telefone;
 	}
 
-	public void setTelefone(Telefone telefone) {
-		if (tamanhoListaTelefone < this.telefone.length) {
-			if (telefone.getDdd() > 0 && telefone.getNumero() != null && telefone.getTipo() != null) {
-				this.telefone[tamanhoListaTelefone] = telefone;
-				this.tamanhoListaTelefone++;
-			}
-		}
+	public void setTelefone(Set<Telefone> telefone) {
+		this.telefone = telefone;
 	}
 
 	public String getDono() {
@@ -108,10 +116,71 @@ public class Empresa {
 	}
 
 	@Override
+	public int hashCode() {
+		return new HashCodeBuilder(1, 3).append(this.cnpj).append(this.dono).append(this.email)
+				.append(this.inscricaoEstadual).append(this.nomeEmpresa).append(this.endereco).append(this.dataCriacao)
+				.append(this.razaoSocial).append(this.telefone).hashCode();
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Empresa other = (Empresa) obj;
+
+		if (cnpj == null) {
+			if (other.cnpj != null)
+				return false;
+		} else if (!cnpj.equals(other.cnpj))
+			return false;
+		if (dataCriacao == null) {
+			if (other.dataCriacao != null)
+				return false;
+		} else if (!dataCriacao.equals(other.dataCriacao))
+			return false;
+		if (dono == null) {
+			if (other.dono != null)
+				return false;
+		} else if (!dono.equals(other.dono))
+			return false;
+		if (email == null) {
+			if (other.email != null)
+				return false;
+		} else if (!email.equals(other.email))
+			return false;
+		if (endereco == null) {
+			if (other.endereco != null)
+				return false;
+		} else if (!endereco.equals(other.endereco))
+			return false;
+		if (inscricaoEstadual == null) {
+			if (other.inscricaoEstadual != null)
+				return false;
+		} else if (!inscricaoEstadual.equals(other.inscricaoEstadual))
+			return false;
+		if (nomeEmpresa == null) {
+			if (other.nomeEmpresa != null)
+				return false;
+		} else if (!nomeEmpresa.equals(other.nomeEmpresa))
+			return false;
+		if (razaoSocial == null) {
+			if (other.razaoSocial != null)
+				return false;
+		} else if (!razaoSocial.equals(other.razaoSocial))
+			return false;
+		return true;
+	}
+
+	@Override
 	public String toString() {
-		return "Empresa [cnpj=" + cnpj + ", razaoSocial=" + razaoSocial + ", endereco=" + endereco + ", telefone="
-				+ ", email=" + email + ", inscricaoEstadual=" + inscricaoEstadual + ", nomeEmpresa=" + nomeEmpresa
-				+ ", dataCriacao=" + dataCriacao + "]";
+		return new ToStringBuilder(this).append("CNPJ: ", this.cnpj).append("Razão Social: ", this.razaoSocial)
+				.append("\nEndereco: ", this.endereco).append("\nTelefone: ", this.telefone)
+				.append("\nEmail: ", this.email).append("\nInscrição Estadual: ", this.inscricaoEstadual)
+				.append("Nome Empresa: ", this.nomeEmpresa).append("\nData criação: ", this.dataCriacao).toString();
 	}
 
 }
