@@ -1,7 +1,8 @@
 package br.com.contimatic.empresa;
 
 import java.util.Date;
-
+import static com.google.common.base.Preconditions.checkArgument;
+import static org.apache.commons.lang3.StringUtils.isNotEmpty;
 import org.joda.time.DateTime;
 
 public class Empresa {
@@ -27,14 +28,9 @@ public class Empresa {
 	}
 
 	public void setCnpj(String cnpj) {
-		if (cnpj != null) {
-			if (cnpj.length() == 14) {
-				if (cnpj.matches("[0-9]+")) {
-					this.cnpj = cnpj;
-				}
-			}
-		}
-
+		checkArgument(isNotEmpty(cnpj) && cnpj.length() == 14, "Cnpj invalido");
+		checkArgument(cnpj.matches("[0-9]+"), "Cnpj deve conter somente números");
+		this.cnpj = cnpj;
 	}
 
 	public String getRazaoSocial() {
@@ -42,13 +38,8 @@ public class Empresa {
 	}
 
 	public void setRazaoSocial(String razaoSocial) {
-		if (razaoSocial != null) {
-			if (!razaoSocial.isEmpty()) {
-				if (razaoSocial.matches("[A-Za-z0-9]")) {
-					this.razaoSocial = razaoSocial;
-				}
-			}
-		}
+		checkArgument(isNotEmpty(razaoSocial) && razaoSocial.matches("[A-Za-z0-9]"));
+		this.razaoSocial = razaoSocial;
 	}
 
 	public Endereco getEndereco() {
@@ -81,13 +72,9 @@ public class Empresa {
 	}
 
 	public void setDono(String dono) {
-		if (dono != null) {
-			if (!dono.isEmpty() && dono.length() > 5) {
-				if (!dono.matches("[0-9]+")) {
-					this.dono = dono;
-				}
-			}
-		}
+		checkArgument(isNotEmpty(dono) && dono.length() > 5, "Nome inválido");
+		checkArgument(!dono.matches("[0-9]+"), "Nome não pode conter números");
+		this.dono = dono;
 	}
 
 	public DateTime getDataCriacao() {
@@ -106,13 +93,9 @@ public class Empresa {
 	}
 
 	public void setInscricaoEstadual(String inscricaoEstadual) {
-		if (inscricaoEstadual != null) {
-			if (inscricaoEstadual.length() == 13) {
-				if (inscricaoEstadual.matches("[0-9]+")) {
-					this.inscricaoEstadual = inscricaoEstadual;
-				}
-			}
-		}
+		checkArgument(isNotEmpty(inscricaoEstadual) && inscricaoEstadual.length() == 13, "Inscrição social invalida");
+		checkArgument(inscricaoEstadual.matches("[0-9]+"), "Inscrição só deve conter números");
+		this.inscricaoEstadual = inscricaoEstadual;
 	}
 
 	public String getNomeEmpresa() {
@@ -120,11 +103,8 @@ public class Empresa {
 	}
 
 	public void setNomeEmpresa(String nomeEmpresa) {
-		if (nomeEmpresa != null) {
-			if (!nomeEmpresa.isEmpty()) {
-				this.nomeEmpresa = nomeEmpresa;
-			}
-		}
+		checkArgument(isNotEmpty(nomeEmpresa), "Nome não pode ser nulo ou vazio");
+		this.nomeEmpresa = nomeEmpresa;
 	}
 
 	@Override

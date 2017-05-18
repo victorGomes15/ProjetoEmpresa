@@ -1,12 +1,14 @@
 package br.com.contimatic.empresa;
 
+import static com.google.common.base.Preconditions.checkArgument;
+import static org.apache.commons.lang3.StringUtils.isNotEmpty;
+
 public class Estado {
 
 	private int cod;
 	private String uf;
 	private Cidade cidade;
 
-	
 	public Estado() {
 	}
 
@@ -23,13 +25,8 @@ public class Estado {
 	}
 
 	public void setUf(String uf) {
-		if (uf != null) {
-			if (uf != "") {
-				if (uf.length() == 2) {
-					this.uf = uf;
-				}
-			}
-		}
+		checkArgument(isNotEmpty(uf) && uf.length() == 2);
+		this.uf = uf;
 	}
 
 	public Cidade getCidade() {
@@ -37,13 +34,13 @@ public class Estado {
 	}
 
 	public void setCidade(Cidade cidade) {
-		if (cidade !=null) {
+		if (cidade != null) {
 			if (cidade.getCodigo() != 0 && !cidade.getBairro().equals(null) && !cidade.getNome().equals(null)) {
 				this.cidade = cidade;
 			}
 		}
 	}
-	
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -65,10 +62,10 @@ public class Estado {
 		result = prime * result + cod;
 		return result;
 	}
-	
+
 	@Override
 	public String toString() {
-		return "Cod Estado: "+this.cod+"\nUf: "+this.uf+"\n"+this.cidade;
+		return "Cod Estado: " + this.cod + "\nUf: " + this.uf + "\n" + this.cidade;
 	}
 
 }

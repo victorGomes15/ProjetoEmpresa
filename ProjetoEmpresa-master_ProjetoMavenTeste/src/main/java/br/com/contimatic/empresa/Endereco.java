@@ -1,5 +1,8 @@
 package br.com.contimatic.empresa;
 
+import static com.google.common.base.Preconditions.checkArgument;
+import static org.apache.commons.lang3.StringUtils.isNotEmpty;
+
 public class Endereco {
 
 	private String rua;
@@ -12,13 +15,9 @@ public class Endereco {
 	}
 
 	public void setRua(String rua) {
-		if (rua != null) {
-			if (!(rua.isEmpty()) && rua.length() >= 4) {
-				if (rua.matches("[a-zA-Z\\s_\\d]+")) {
-					this.rua = rua;
-				}
-			}
-		}
+		checkArgument(isNotEmpty(rua) && rua.length() >= 4);
+		checkArgument(rua.matches("[a-zA-Z\\s_\\d]+"));
+		this.rua = rua;
 	}
 
 	public Integer getNumero() {
