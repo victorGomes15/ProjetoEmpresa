@@ -1,5 +1,8 @@
 package br.com.contimatic.empresa;
 
+import static com.google.common.base.Preconditions.checkArgument;
+import static org.apache.commons.lang3.StringUtils.isNotEmpty;
+
 public class Email {
 
 	private String enderecoEmail;
@@ -9,17 +12,16 @@ public class Email {
 	}
 
 	public void setEnderecoEmail(String enderecoEmail) {
-		if (enderecoEmail!=null && !enderecoEmail.isEmpty()) {
-			int contArroba = 0;
-			for (int i = 0; i < enderecoEmail.length(); i++) {
-				if (enderecoEmail.charAt(i) == '@') {
-					contArroba++;
-				}
+		checkArgument(isNotEmpty(enderecoEmail));
+		int contArroba = 0;
+		for (int i = 0; i < enderecoEmail.length(); i++) {
+			if (enderecoEmail.charAt(i) == '@') {
+				contArroba++;
 			}
-			if (contArroba == 1 && !(enderecoEmail.charAt(enderecoEmail.length() - 1) == '.')) {
-				if (!(enderecoEmail.charAt(0) == '@') && !(enderecoEmail.indexOf("@") == enderecoEmail.length() - 1)) {
-					this.enderecoEmail = enderecoEmail;
-				}
+		}
+		if (contArroba == 1 && !(enderecoEmail.charAt(enderecoEmail.length() - 1) == '.')) {
+			if (!(enderecoEmail.charAt(0) == '@') && !(enderecoEmail.indexOf("@") == enderecoEmail.length() - 1)) {
+				this.enderecoEmail = enderecoEmail;
 			}
 		}
 	}

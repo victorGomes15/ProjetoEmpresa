@@ -1,5 +1,8 @@
 package br.com.contimatic.empresa;
 
+import static com.google.common.base.Preconditions.checkArgument;
+import static org.apache.commons.lang3.StringUtils.isNotEmpty;
+
 public class Cidade {
 
 	private Integer codigo;
@@ -22,13 +25,8 @@ public class Cidade {
 	}
 
 	public void setNome(String nome) {
-		if (nome != null) {
-			if (nome != "") {
-				if (nome.length() > 2) {
-					this.nome = nome;
-				}
-			}
-		}
+		checkArgument(isNotEmpty(nome) && nome.length() > 2, "Nome da cidade invalido");
+		this.nome = nome;
 	}
 
 	public Bairro getBairro() {
