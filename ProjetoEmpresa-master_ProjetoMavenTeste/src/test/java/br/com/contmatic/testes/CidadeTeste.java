@@ -9,47 +9,51 @@ import org.junit.Test;
 
 import br.com.contmatic.empresa.Bairro;
 import br.com.contmatic.empresa.Cidade;
+import br.com.six2six.fixturefactory.Fixture;
+import br.com.six2six.fixturefactory.loader.FixtureFactoryLoader;
 
 public class CidadeTeste {
 
 	private Cidade cidade;
+
 	@BeforeClass
-    public static void setUpClass() {
-    
-		System.out.println("Começo dos testes da classe "+CidadeTeste.class.getSimpleName()+"\n");
+	public static void setUpClass() {
+
+		System.out.println("Começo dos testes da classe " + CidadeTeste.class.getSimpleName() + "\n");
+		FixtureFactoryLoader.loadTemplates("br.com.contmatic.templates");
 	}
-    
-    @AfterClass
-    public static void tearDownClass() {
-    
-    	System.out.println("Fim dos testes da classe "+CidadeTeste.class.getSimpleName()+"\n");
-    }
+
+	@AfterClass
+	public static void tearDownClass() {
+
+		System.out.println("Fim dos testes da classe " + CidadeTeste.class.getSimpleName() + "\n");
+	}
 
 	@Before
 	public void criar_objeto() {
-		cidade = new Cidade();
+		cidade = Fixture.from(Cidade.class).gimme("cidadeValida");
 		System.out.println("Começo do teste");
 	}
-	
+
 	@After
 	public void finalizacao_Teste() {
-		System.out.println("Fim de teste");;
+		System.out.println(cidade);
+		System.out.println("Fim de teste");
 	}
-	
 
-	@Test(expected= IllegalArgumentException.class)
+	@Test(expected = IllegalArgumentException.class)
 	public void nao_deve_aceitar_um_nome_nulo() {
 		cidade.setNome(null);
 		Assert.assertNull(cidade.getNome());
 	}
 
-	@Test(expected= IllegalArgumentException.class)
+	@Test(expected = IllegalArgumentException.class)
 	public void nao_deve_aceitar_um_nome_vazio() {
 		cidade.setNome("");
 		Assert.assertNull(cidade.getNome());
 	}
 
-	@Test(expected= IllegalArgumentException.class)
+	@Test(expected = IllegalArgumentException.class)
 	public void nao_deve_aceitar_um_nome_com_menos_de_3_caracteres() {
 		cidade.setNome("It");
 		Assert.assertNull(cidade.getNome());
@@ -60,7 +64,7 @@ public class CidadeTeste {
 		cidade.setNome("Itu");
 		Assert.assertNotNull(cidade.getNome());
 	}
-	
+
 	@Test
 	public void printObj() {
 		System.out.println(cidade);
@@ -68,15 +72,12 @@ public class CidadeTeste {
 
 	@Test
 	public void deve_aceitar_um_bairro_valido() {
-		Bairro bairro = new Bairro();
-		bairro.setCodigo(1);
-		bairro.setNomeBairro("Jardim");
-		bairro.setCep("05857-380");
-		cidade.setBairro(bairro);
-		Assert.assertNotNull(cidade.getBairro());
+		Cidade cid = Fixture.from(Cidade.class).gimme("cidadeValida");
+
+		Assert.assertNotNull(cid.getBairro());
 	}
 
-	@Test(expected= IllegalArgumentException.class)
+	@Test(expected = IllegalArgumentException.class)
 	public void nao_deve_aceitar_um_bairro_invalido() {
 		Bairro bairro = new Bairro();
 		bairro.setCodigo(0);

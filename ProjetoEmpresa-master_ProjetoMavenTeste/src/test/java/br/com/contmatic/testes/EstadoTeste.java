@@ -10,14 +10,17 @@ import org.junit.Test;
 import br.com.contmatic.empresa.Bairro;
 import br.com.contmatic.empresa.Cidade;
 import br.com.contmatic.empresa.Estado;
+import br.com.six2six.fixturefactory.Fixture;
+import br.com.six2six.fixturefactory.loader.FixtureFactoryLoader;
 
 public class EstadoTeste {
 
-	private Estado estado = new Estado();
+	private Estado estado;
 
 	@BeforeClass
 	public static void setUpClass() {
 		System.out.println("Começo dos testes da classe " + EstadoTeste.class.getSimpleName() + "\n");
+		FixtureFactoryLoader.loadTemplates("br.com.contmatic.templates");
 	}
 
 	@AfterClass
@@ -27,14 +30,14 @@ public class EstadoTeste {
 
 	@Before
 	public void criar_objeto() {
-		estado = new Estado();
+		estado = Fixture.from(Estado.class).gimme("estValido");
 		System.out.println("Começo do teste ");
 	}
 
 	@After
 	public void finalizacao_Teste() {
+		System.out.println(estado);
 		System.out.println("Fim de teste");
-		;
 	}
 
 	@Test(expected = IllegalArgumentException.class)
@@ -43,25 +46,25 @@ public class EstadoTeste {
 		Assert.assertEquals(null, estado.getCod());
 	}
 
-	@Test(expected= IllegalArgumentException.class)
+	@Test(expected = IllegalArgumentException.class)
 	public void nao_deve_aceitar_uma_uf_nula() {
 		estado.setUf(null);
 		Assert.assertNull(estado.getUf());
 	}
 
-	@Test(expected= IllegalArgumentException.class)
+	@Test(expected = IllegalArgumentException.class)
 	public void nao_deve_aceitar_uma_uf_vazia() {
 		estado.setUf("");
 		Assert.assertNull(estado.getUf());
 	}
 
-	@Test(expected= IllegalArgumentException.class)
+	@Test(expected = IllegalArgumentException.class)
 	public void nao_deve_aceitar_uma_uf_com_mais_de_2_caracteres() {
 		estado.setUf("paraiba");
 		Assert.assertNull(estado.getUf());
 	}
 
-	@Test(expected= IllegalArgumentException.class)
+	@Test(expected = IllegalArgumentException.class)
 	public void nao_deve_aceitar_uma_uf_com_menos_de_2_caracteres() {
 		estado.setUf("u");
 		Assert.assertNull(estado.getUf());
@@ -73,7 +76,12 @@ public class EstadoTeste {
 		Assert.assertNotNull(estado.getUf());
 	}
 
-	@Test(expected= IllegalArgumentException.class)
+	@Test
+	public void printObj() {
+		System.out.println(estado);
+	}
+
+	@Test(expected = IllegalArgumentException.class)
 	public void nao_deve_aceitar_uma_cidade_invalida() {
 		Cidade cidade = new Cidade();
 		cidade.setCodigo(-1);

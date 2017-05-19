@@ -9,15 +9,15 @@ public class EmailTemplates implements TemplateLoader {
 
 	@Override
 	public void load() {
-		Fixture.of(Email.class).addTemplate("valido", new Rule() {
+		Fixture.of(Email.class).addTemplate("emailValido", new Rule() {
 			{
 				add("enderecoEmail", random("victor@gmail.com", "victor@gmail.com.br", "Josevictor@gmail.com"));
 			}
 		});
 
-		Fixture.of(Email.class).addTemplate("invalido", new Rule() {
+		Fixture.of(Email.class).addTemplate("mailInvalido", new Rule() {
 			{
-				add("enderecoEmail", random("@gmail.com", "victor@gmail.com.br.", "Jose@victor@gmail.com"));
+				add("enderecoEmail", random("@gmail.com", "victor@gmail.com.br.", "Jose@victor@gmail.com","victor@"));
 			}
 		});
 	}

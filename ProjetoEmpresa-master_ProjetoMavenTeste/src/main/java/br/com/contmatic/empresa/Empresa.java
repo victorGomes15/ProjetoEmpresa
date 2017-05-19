@@ -6,16 +6,26 @@ import static org.apache.commons.lang3.StringUtils.isNotEmpty;
 import java.util.Date;
 import java.util.Set;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.joda.time.DateTime;
 
+import br.com.caelum.stella.bean.validation.CNPJ;
+
 public class Empresa {
 
+	@CNPJ
+	@NotNull
 	private String cnpj;
+	@NotNull
 	private String razaoSocial;
 	private Endereco endereco;
 	private Set<Telefone> telefone;
+	@Size(max=15)
+	@NotNull
 	private String dono;
 	private Email email;
 	private String inscricaoEstadual;

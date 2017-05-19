@@ -1,6 +1,6 @@
 package br.com.contmatic.templates;
 
-import br.com.contmatic.empresa.Email;
+import br.com.contmatic.empresa.Bairro;
 import br.com.six2six.fixturefactory.Fixture;
 import br.com.six2six.fixturefactory.Rule;
 import br.com.six2six.fixturefactory.loader.TemplateLoader;
@@ -9,15 +9,19 @@ public class BairroTemplates implements TemplateLoader{
 
 	@Override
 	public void load() {
-		Fixture.of(Email.class).addTemplate("valido", new Rule() {
+		Fixture.of(Bairro.class).addTemplate("bairroValido", new Rule() {
 			{
-				add("enderecoEmail", random("victor@gmail.com", "victor@gmail.com.br", "Josevictor@gmail.com"));
+				add("codigo", random(Integer.class, range(1, 100)));
+				add("nomeBairro", random("Ibirapuera", "Capão Redondo", "Tatuapé"));
+				add("cep", regex("^\\d{5}-\\d{3}$"));
 			}
 		});
 
-		Fixture.of(Email.class).addTemplate("invalido", new Rule() {
+		Fixture.of(Bairro.class).addTemplate("bairroInvalido", new Rule() {
 			{
-				add("enderecoEmail", random("@gmail.com", "victor@gmail.com.br.", "Jose@victor@gmail.com"));
+				add("codigo", random(Integer.class, range(1, 100)));
+				add("nomeBairro", random("Ib", "Ca", "Tat@@@é"));
+				add("cep", regex("^\\d{50}-\\d{3}$"));
 			}
 		});
 		

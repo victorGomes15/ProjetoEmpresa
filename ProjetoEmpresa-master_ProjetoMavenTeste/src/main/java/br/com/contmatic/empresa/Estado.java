@@ -54,7 +54,6 @@ public class Estado {
 		}
 
 		Estado other = (Estado) obj;
-
 		return new EqualsBuilder().append(this.cod, other.cod).isEquals();
 	}
 
@@ -65,7 +64,7 @@ public class Estado {
 
 	@Override
 	public String toString() {
-		return  ToStringBuilder.reflectionToString(this, new MultilineRecursiveToStringStyle());
+		return ToStringBuilder.reflectionToString(this, new MultilineRecursiveToStringStyle());
 	}
 
 }

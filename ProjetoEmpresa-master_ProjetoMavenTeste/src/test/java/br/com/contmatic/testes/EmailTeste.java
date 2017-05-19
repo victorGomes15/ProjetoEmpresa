@@ -9,7 +9,6 @@ import org.junit.Test;
 
 import br.com.contmatic.empresa.Email;
 import br.com.six2six.fixturefactory.Fixture;
-import br.com.six2six.fixturefactory.Rule;
 import br.com.six2six.fixturefactory.loader.FixtureFactoryLoader;
 
 public class EmailTeste {
@@ -19,7 +18,7 @@ public class EmailTeste {
 	@BeforeClass
 	public static void setUpClass() {
 		System.out.println("Começo dos testes da classe " + EmailTeste.class.getSimpleName() + "\n");
-		FixtureFactoryLoader.loadTemplates("br.com.contmatic.EmailTemplates");
+		FixtureFactoryLoader.loadTemplates("br.com.contmatic.templates");
 	}
 
 	@AfterClass
@@ -29,12 +28,13 @@ public class EmailTeste {
 
 	@Before
 	public void cria_objt() {
-		email = new Email();
+		email = Fixture.from(Email.class).gimme("emailValido");
 		System.out.println("Começo do teste ");
 	}
 
 	@After
 	public void finalizacao_Teste() {
+		System.out.println(email);
 		System.out.println("Fim de teste");
 	}
 
@@ -59,13 +59,12 @@ public class EmailTeste {
 
 	@Test
 	public void deve_aceitar_um_email_com_1_arroba() {
-		Email email2  = Fixture.from(Email.class).gimme("valido");
-		Assert.assertNotNull(email2.getEnderecoEmail());
+		Assert.assertNotNull(email.getEnderecoEmail());
 	}
 
-	@Test(expected= IllegalArgumentException.class)
+	@Test(expected = IllegalArgumentException.class)
 	public void nao_deve_aceitar_um_email_com_ponto_no_final() {
-		Email email2 = Fixture.from(Email.class).gimme("invalido");
+		Email email2 = Fixture.from(Email.class).gimme("emailInvalido");
 		Assert.assertNull(email2.getEnderecoEmail());
 	}
 

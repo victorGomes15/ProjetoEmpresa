@@ -7,6 +7,7 @@ import static org.apache.commons.lang3.StringUtils.isNotEmpty;
 
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.MultilineRecursiveToStringStyle;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 public class Telefone {
@@ -50,12 +51,9 @@ public class Telefone {
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
+		if (!(obj instanceof Telefone)) {
 			return false;
-		if (getClass() != obj.getClass())
-			return false;
+		}
 		Telefone other = (Telefone) obj;
 
 		return new EqualsBuilder().append(this.ddd, other.ddd).append(this.numero, other.numero)
@@ -65,13 +63,12 @@ public class Telefone {
 
 	@Override
 	public int hashCode() {
-		return new HashCodeBuilder(1, 3).append(this.ddd).append(this.numero).append(this.tipo).toHashCode();
+		return new HashCodeBuilder().append(this.ddd).append(this.numero).append(this.tipo).toHashCode();
 	}
 
 	@Override
 	public String toString() {
-		return new ToStringBuilder(this).append("DDD: ", this.ddd).append("\nNúmero: ", this.numero)
-				.append("\nTipo: ", this.tipo).toString();
+		return ToStringBuilder.reflectionToString(this, new MultilineRecursiveToStringStyle());
 
 	}
 }
