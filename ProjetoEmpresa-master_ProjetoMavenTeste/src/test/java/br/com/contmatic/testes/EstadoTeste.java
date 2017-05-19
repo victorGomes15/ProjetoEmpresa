@@ -30,7 +30,7 @@ public class EstadoTeste {
 
 	@Before
 	public void criar_objeto() {
-		estado = Fixture.from(Estado.class).gimme("estValido");
+		estado = Fixture.from(Estado.class).gimme("estadoValido");
 		System.out.println("Começo do teste ");
 	}
 
