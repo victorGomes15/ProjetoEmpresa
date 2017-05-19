@@ -23,7 +23,8 @@ public class Email {
 				contArroba++;
 			}
 		}
-		checkArgument(contArroba == 1 && !(enderecoEmail.charAt(enderecoEmail.length() - 1) == '.'), "Email incorreto");
+		checkArgument(contArroba == 1 && !(enderecoEmail.charAt(enderecoEmail.length() - 1) == '.'),
+				"Email incorreto ");
 		checkArgument(!(enderecoEmail.charAt(0) == '@') && !(enderecoEmail.indexOf("@") == enderecoEmail.length() - 1),
 				"Email não pode começar ou terminar com @ ou ponto");
 		this.enderecoEmail = enderecoEmail;
@@ -31,18 +32,14 @@ public class Email {
 
 	@Override
 	public int hashCode() {
-		return new HashCodeBuilder(1, 3).append(this.enderecoEmail).toHashCode();
+		return new HashCodeBuilder().append(this.enderecoEmail).toHashCode();
 	}
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
+		if (!(obj instanceof Email)) {
 			return false;
-		if (getClass() != obj.getClass())
-			return false;
-
+		}
 		Email other = (Email) obj;
 
 		return new EqualsBuilder().append(this.enderecoEmail, other.enderecoEmail).isEquals();
@@ -51,7 +48,7 @@ public class Email {
 
 	@Override
 	public String toString() {
-		return new ToStringBuilder(this).append("Email:", this.enderecoEmail).toString();
+		return ToStringBuilder.reflectionToString(this);
 	}
 
 }

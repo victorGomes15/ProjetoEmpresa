@@ -5,6 +5,7 @@ import static org.apache.commons.lang3.StringUtils.isNotEmpty;
 
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.MultilineRecursiveToStringStyle;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 public class Cidade {
@@ -39,34 +40,30 @@ public class Cidade {
 	}
 
 	public void setBairro(Bairro bairro) {
-		checkArgument(bairro != null,"Bairro nulo");
-		checkArgument(!bairro.getNomeBairro().equals(null) && bairro.getCodigo() > 0,"Nome do bairro ou código invalido");
+		checkArgument(bairro != null, "Bairro nulo");
+		checkArgument(!bairro.getNomeBairro().equals(null) && bairro.getCodigo() > 0,
+				"Nome do bairro ou código invalido");
 		this.bairro = bairro;
 	}
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
+		if (!(obj instanceof Cidade)) {
 			return false;
-		if (getClass() != obj.getClass())
-			return false;
+		}
 		Cidade other = (Cidade) obj;
 
-		return new EqualsBuilder().append(this.codigo, other.codigo).append(this.nome, other.nome)
-				.append(this.bairro, other.bairro).isEquals();
+		return new EqualsBuilder().append(this.codigo, other.codigo).isEquals();
 	}
 
 	@Override
 	public int hashCode() {
-		return new HashCodeBuilder(1,3).append(this.codigo).append(this.nome).append(this.bairro).toHashCode();
+		return new HashCodeBuilder().append(this.codigo).toHashCode();
 	}
 
 	@Override
 	public String toString() {
-		return new ToStringBuilder(this).append("Cod cidade: ", this.codigo).append("Cidade: ", this.nome)
-				.append("Bairro:\n ", this.bairro).toString();
+		return ToStringBuilder.reflectionToString(this, new MultilineRecursiveToStringStyle());
 	}
 
 }

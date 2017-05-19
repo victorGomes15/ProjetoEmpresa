@@ -60,6 +60,11 @@ public class CidadeTeste {
 		cidade.setNome("Itu");
 		Assert.assertNotNull(cidade.getNome());
 	}
+	
+	@Test
+	public void printObj() {
+		System.out.println(cidade);
+	}
 
 	@Test
 	public void deve_aceitar_um_bairro_valido() {

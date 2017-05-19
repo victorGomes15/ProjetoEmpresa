@@ -10,6 +10,7 @@ import org.junit.Test;
 import br.com.contmatic.empresa.Email;
 import br.com.six2six.fixturefactory.Fixture;
 import br.com.six2six.fixturefactory.Rule;
+import br.com.six2six.fixturefactory.loader.FixtureFactoryLoader;
 
 public class EmailTeste {
 
@@ -18,19 +19,7 @@ public class EmailTeste {
 	@BeforeClass
 	public static void setUpClass() {
 		System.out.println("Começo dos testes da classe " + EmailTeste.class.getSimpleName() + "\n");
-
-		Fixture.of(Email.class).addTemplate("valido", new Rule() {
-			{
-				add("enderecoEmail", random("victor@gmail.com", "victor@gmail.com.br", "Josevictor@gmail.com"));
-			}
-		});
-
-		Fixture.of(Email.class).addTemplate("invalido", new Rule() {
-			{
-				add("enderecoEmail", random("@gmail.com", "victor@gmail.com.br.", "Jose@victor@gmail.com"));
-			}
-		});
-
+		FixtureFactoryLoader.loadTemplates("br.com.contmatic.EmailTemplates");
 	}
 
 	@AfterClass

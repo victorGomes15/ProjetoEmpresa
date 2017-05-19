@@ -15,10 +15,10 @@ public class Bairro {
 
 	/** The codigo. */
 	private Integer codigo;
-	
+
 	/** The nome bairro. */
 	private String nomeBairro;
-	
+
 	/** The cep. */
 	private String cep;
 
@@ -34,7 +34,8 @@ public class Bairro {
 	/**
 	 * Sets the codigo.
 	 *
-	 * @param codigo the new codigo
+	 * @param codigo
+	 *            the new codigo
 	 */
 	public void setCodigo(int codigo) {
 		checkArgument(codigo > 0, "Código inserido menor ou igual a 0");
@@ -53,7 +54,8 @@ public class Bairro {
 	/**
 	 * Sets the nome bairro.
 	 *
-	 * @param nomeBairro the new nome bairro
+	 * @param nomeBairro
+	 *            the new nome bairro
 	 */
 	public void setNomeBairro(String nomeBairro) {
 		checkArgument(isNotEmpty(nomeBairro) && nomeBairro.length() > 3, "Nome de bairro incorreto");
@@ -72,46 +74,48 @@ public class Bairro {
 	/**
 	 * Sets the cep.
 	 *
-	 * @param cep the new cep
+	 * @param cep
+	 *            the new cep
 	 */
 	public void setCep(String cep) {
 		checkArgument(isNotEmpty(cep) && cep.matches("^\\d{5}-\\d{3}$"), "Cep inváldo");
 		this.cep = cep;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
+		if (!(obj instanceof Email)) {
 			return false;
-		if (getClass() != obj.getClass())
-			return false;
+		}
 		Bairro other = (Bairro) obj;
 
-		return new EqualsBuilder().append(this.codigo, other.codigo).append(this.cep, other.cep)
-				.append(this.nomeBairro, other.nomeBairro).isEquals();
+		return new EqualsBuilder().append(this.codigo, other.codigo).isEquals();
 
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#hashCode()
 	 */
 	@Override
 	public int hashCode() {
-		return new HashCodeBuilder(1, 3).append(this.codigo).append(this.cep).append(this.nomeBairro).toHashCode();
+		return new HashCodeBuilder().append(this.codigo).toHashCode();
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
 	public String toString() {
-		return new ToStringBuilder(this).append("Cod Bairro", this.codigo).append("\nBairro ", this.nomeBairro)
-				.append("\nCep", this.cep).toString();
+		return ToStringBuilder.reflectionToString(this);
 	}
 
 }

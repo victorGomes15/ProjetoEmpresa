@@ -8,7 +8,6 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import br.com.contmatic.empresa.Bairro;
-import br.com.six2six.fixturefactory.Fixture;
 
 public class BairroTeste {
 

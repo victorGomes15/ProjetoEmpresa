@@ -5,6 +5,7 @@ import static org.apache.commons.lang3.StringUtils.isNotEmpty;
 
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.MultilineRecursiveToStringStyle;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 public class Estado {
@@ -48,27 +49,23 @@ public class Estado {
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
+		if (!(obj instanceof Estado)) {
 			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
+		}
+
 		Estado other = (Estado) obj;
 
-		return new EqualsBuilder().append(this.cod, other.cod).append(this.uf, other.uf)
-				.append(this.cidade, other.cidade).isEquals();
+		return new EqualsBuilder().append(this.cod, other.cod).isEquals();
 	}
 
 	@Override
 	public int hashCode() {
-		return new HashCodeBuilder(1, 3).append(this.uf).append(this.cod).append(this.cidade).hashCode();
+		return new HashCodeBuilder().append(this.cod).hashCode();
 	}
 
 	@Override
 	public String toString() {
-		return new ToStringBuilder(this).append("Cod Estado: ", this.cod).append("\nUF: ", this.uf)
-				.append("\nCidade: \n", this.cidade).toString();
+		return  ToStringBuilder.reflectionToString(this, new MultilineRecursiveToStringStyle());
 	}
 
 }

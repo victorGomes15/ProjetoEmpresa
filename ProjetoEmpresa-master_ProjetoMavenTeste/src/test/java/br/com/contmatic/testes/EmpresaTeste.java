@@ -172,7 +172,7 @@ public class EmpresaTeste {
 
 	@Test
 	public void nao_deve_aceitar_um_email_que_esteja_vazio_depois_do_arroba() {
-		empresa.setRazaoSocial("jose@");
+		empresa.setRazaoSocial("jose @");
 		Assert.assertNull(empresa.getRazaoSocial());
 	}
 

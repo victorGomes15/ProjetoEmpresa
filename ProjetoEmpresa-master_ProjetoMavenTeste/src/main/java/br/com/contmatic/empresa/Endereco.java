@@ -61,18 +61,15 @@ public class Endereco {
 
 	@Override
 	public int hashCode() {
-		return new HashCodeBuilder(1, 3).append(this.rua).append(this.numero).append(this.estado)
+		return new HashCodeBuilder().append(this.rua).append(this.numero).append(this.estado)
 				.append(this.complemento).hashCode();
 	}
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
+		if (!(obj instanceof Endereco)) {
 			return false;
-		if (getClass() != obj.getClass())
-			return false;
+		}
 		Endereco other = (Endereco) obj;
 
 		return new EqualsBuilder().append(this.rua, other.rua).append(this.numero, other.numero)
