@@ -1,4 +1,4 @@
-package br.com.contimatic.empresa;
+package br.com.contmatic.testes;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -7,8 +7,8 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import br.com.contimatic.empresa.Bairro;
-import br.com.contimatic.empresa.Cidade;
+import br.com.contmatic.empresa.Bairro;
+import br.com.contmatic.empresa.Cidade;
 
 public class CidadeTeste {
 

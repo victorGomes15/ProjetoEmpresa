@@ -1,4 +1,4 @@
-package br.com.contimatic.empresa;
+package br.com.contmatic.testes;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -7,7 +7,8 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import br.com.contimatic.empresa.Telefone;
+import br.com.contmatic.empresa.Telefone;
+import br.com.contmatic.empresa.TelefoneType;
 
 public class TelefoneTeste {
 
@@ -81,7 +82,7 @@ public class TelefoneTeste {
 		telefone.setNumero("5825495l");
 		Assert.assertNull(telefone.getNumero());
 	}
-
+	
 	@Test
 	public void deve_aceitar_um_Tipo_que_seja_celular_ou_fixo() {
 		String x = "Fixo";

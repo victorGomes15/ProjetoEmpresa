@@ -1,4 +1,4 @@
-package br.com.contimatic.empresa;
+package br.com.contmatic.testes;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -7,7 +7,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import br.com.contimatic.empresa.Email;
+import br.com.contmatic.empresa.Email;
 import br.com.six2six.fixturefactory.Fixture;
 import br.com.six2six.fixturefactory.Rule;
 
@@ -70,14 +70,14 @@ public class EmailTeste {
 
 	@Test
 	public void deve_aceitar_um_email_com_1_arroba() {
-		email.setEnderecoEmail("joao@gmail.com.br");
-		Assert.assertEquals("joao@gmail.com.br", email.getEnderecoEmail());
+		Email email2  = Fixture.from(Email.class).gimme("valido");
+		Assert.assertNotNull(email2.getEnderecoEmail());
 	}
 
-	@Test
+	@Test(expected= IllegalArgumentException.class)
 	public void nao_deve_aceitar_um_email_com_ponto_no_final() {
-		email.setEnderecoEmail("joao@gmail.com.br.");
-		Assert.assertNull(email.getEnderecoEmail());
+		Email email2 = Fixture.from(Email.class).gimme("invalido");
+		Assert.assertNull(email2.getEnderecoEmail());
 	}
 
 	@Test

@@ -1,4 +1,4 @@
-package br.com.contimatic.empresa;
+package br.com.contmatic.empresa;
 
 import static com.google.common.base.Preconditions.checkArgument;
 import static org.apache.commons.lang3.StringUtils.isNotEmpty;
@@ -25,7 +25,7 @@ public class Email {
 		}
 		checkArgument(contArroba == 1 && !(enderecoEmail.charAt(enderecoEmail.length() - 1) == '.'), "Email incorreto");
 		checkArgument(!(enderecoEmail.charAt(0) == '@') && !(enderecoEmail.indexOf("@") == enderecoEmail.length() - 1),
-				"Email não pode começar ou terminar com @");
+				"Email não pode começar ou terminar com @ ou ponto");
 		this.enderecoEmail = enderecoEmail;
 	}
 

@@ -1,4 +1,4 @@
-package br.com.contimatic.empresa;
+package br.com.contmatic.empresa;
 
 public enum TelefoneType {
 	

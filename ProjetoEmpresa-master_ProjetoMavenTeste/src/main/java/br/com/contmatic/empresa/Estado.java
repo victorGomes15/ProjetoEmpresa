@@ -1,4 +1,4 @@
-package br.com.contimatic.empresa;
+package br.com.contmatic.empresa;
 
 import static com.google.common.base.Preconditions.checkArgument;
 import static org.apache.commons.lang3.StringUtils.isNotEmpty;
@@ -41,7 +41,7 @@ public class Estado {
 	public void setCidade(Cidade cidade) {
 		checkArgument(cidade != null, "Cidade nula");
 		checkArgument(
-				!(cidade.getCodigo().equals(0)) && !cidade.getBairro().equals(null) && !cidade.getNome().equals(null),
+				!cidade.getCodigo().equals(0) && !cidade.getBairro().equals(null) && !cidade.getNome().equals(null),
 				"Cidade invalida");
 		this.cidade = cidade;
 	}

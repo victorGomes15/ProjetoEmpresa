@@ -1,4 +1,4 @@
-package br.com.contimatic.empresa;
+package br.com.contmatic.testes;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -7,7 +7,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import br.com.contimatic.empresa.Endereco;
+import br.com.contmatic.empresa.Endereco;
 
 public class EnderecoTeste {
 

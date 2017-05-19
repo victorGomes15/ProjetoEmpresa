@@ -1,6 +1,8 @@
-package br.com.contimatic.empresa;
+package br.com.contmatic.testes;
 
 import java.text.ParseException;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.joda.time.format.DateTimeFormat;
 import org.junit.After;
@@ -12,6 +14,10 @@ import org.junit.FixMethodOrder;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
+
+import br.com.contmatic.empresa.Empresa;
+import br.com.contmatic.empresa.Telefone;
+import br.com.contmatic.empresa.TelefoneType;
 
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
@@ -148,8 +154,13 @@ public class EmpresaTeste {
 		Telefone tel = new Telefone();
 		tel.setDdd(11);
 		tel.setNumero("58254952");
-		tel.setTipo("fixo");
-		empresa.setTelefone(tel);
+		String tipo="Fixo";
+		TelefoneType.valueOf(tipo);
+		tel.setTipo(TelefoneType.valueOf(tipo));
+		
+		Set<Telefone > listTelefone = new HashSet<>();
+		listTelefone.add(tel);
+		empresa.setTelefone(listTelefone);
 		Assert.assertNotNull(empresa.getTelefone());
 	}
 

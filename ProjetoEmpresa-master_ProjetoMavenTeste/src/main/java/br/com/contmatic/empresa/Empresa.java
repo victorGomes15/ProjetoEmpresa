@@ -1,4 +1,4 @@
-package br.com.contimatic.empresa;
+package br.com.contmatic.empresa;
 
 import static com.google.common.base.Preconditions.checkArgument;
 import static org.apache.commons.lang3.StringUtils.isNotEmpty;

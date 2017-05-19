@@ -1,9 +1,13 @@
-package br.com.contimatic.empresa;
+package br.com.contmatic.empresa;
 
-import static br.com.contimatic.empresa.TelefoneType.CELULAR;
-import static br.com.contimatic.empresa.TelefoneType.FIXO;
+import static br.com.contmatic.empresa.TelefoneType.CELULAR;
+import static br.com.contmatic.empresa.TelefoneType.FIXO;
 import static com.google.common.base.Preconditions.checkArgument;
 import static org.apache.commons.lang3.StringUtils.isNotEmpty;
+
+import org.apache.commons.lang.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 public class Telefone {
 
@@ -53,24 +57,21 @@ public class Telefone {
 		if (getClass() != obj.getClass())
 			return false;
 		Telefone other = (Telefone) obj;
-		if (ddd == null) {
-			if (other.ddd != null)
-				return false;
-		} else if (!ddd.equals(other.ddd))
-			return false;
-		return true;
+
+		return new EqualsBuilder().append(this.ddd, other.ddd).append(this.numero, other.numero)
+				.append(this.tipo, other.tipo).isEquals();
+
 	}
 
 	@Override
 	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((ddd == null) ? 0 : ddd.hashCode());
-		return result;
+		return new HashCodeBuilder(1, 3).append(this.ddd).append(this.numero).append(this.tipo).toHashCode();
 	}
 
 	@Override
 	public String toString() {
-		return "Ddd: " + this.ddd + "\nNumero: " + this.numero + "\nTipo: " + this.tipo;
+		return new ToStringBuilder(this).append("DDD: ", this.ddd).append("\nNúmero: ", this.numero)
+				.append("\nTipo: ", this.tipo).toString();
+
 	}
 }
