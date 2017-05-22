@@ -9,6 +9,8 @@ import org.junit.Test;
 
 import br.com.contmatic.empresa.Telefone;
 import br.com.contmatic.empresa.TelefoneType;
+import br.com.six2six.fixturefactory.Fixture;
+import br.com.six2six.fixturefactory.loader.FixtureFactoryLoader;
 
 public class TelefoneTeste {
 
@@ -17,6 +19,7 @@ public class TelefoneTeste {
 	@BeforeClass
 	public static void setUpClass() {
 		System.out.println("Começo dos testes da classe " + TelefoneTeste.class.getSimpleName() + "\n");
+		FixtureFactoryLoader.loadTemplates("br.com.contmatic.templates");
 	}
 
 	@AfterClass
@@ -26,7 +29,7 @@ public class TelefoneTeste {
 
 	@Before
 	public void criar_objeto_telefone() {
-		telefone = new Telefone();
+		telefone = Fixture.from(Telefone.class).gimme("telefoneValido");
 		System.out.println("Começo do teste ");
 	}
 
@@ -59,35 +62,28 @@ public class TelefoneTeste {
 		Assert.assertNotNull(telefone.getNumero());
 	}
 
-	@Test
+	@Test(expected = IllegalArgumentException.class)
 	public void nao_deve_conter_menos_de_8_caracteres_no_numero() {
 		telefone.setNumero("1234567");
 		Assert.assertNull(telefone.getNumero());
 	}
 
-	@Test
+	@Test(expected = IllegalArgumentException.class)
 	public void nao_deve_conter_mais_de_9_caracteres_no_numero() {
 		telefone.setNumero("5825495210");
 		Assert.assertNull(telefone.getNumero());
 	}
 
-	@Test
+	@Test(expected = IllegalArgumentException.class)
 	public void nao_deve_aceitar_um_Numero_vazio() {
 		telefone.setNumero("");
 		Assert.assertNull(telefone.getNumero());
 	}
 
-	@Test
+	@Test(expected = IllegalArgumentException.class)
 	public void nao_deve_aceitar_um_Numero_com_letras() {
 		telefone.setNumero("5825495l");
 		Assert.assertNull(telefone.getNumero());
-	}
-	
-	@Test
-	public void deve_aceitar_um_Tipo_que_seja_celular_ou_fixo() {
-		String x = "Fixo";
-		telefone.setTipo(TelefoneType.valueOf(x));
-		Assert.assertNotNull(telefone.getTipo());
 	}
 
 	@Test
@@ -119,9 +115,15 @@ public class TelefoneTeste {
 
 	@Test
 	public void deve_aceitar_um_Tipo_que_seja_igual_celular_ou_fixo() {
-		String x = "Fixo";
-		telefone.setTipo(TelefoneType.valueOf(x));
-		Assert.assertEquals("FiXo", telefone.getTipo());
+		String tipo = "FiXo";
+		telefone.setTipo(TelefoneType.valueOf(tipo.toUpperCase()));
+		Assert.assertEquals(TelefoneType.FIXO, telefone.getTipo());
+
+	}
+
+	@Test
+	public void print() {
+		System.out.println(telefone);
 	}
 
 }

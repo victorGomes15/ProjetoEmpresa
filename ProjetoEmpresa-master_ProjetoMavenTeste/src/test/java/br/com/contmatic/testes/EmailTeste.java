@@ -47,14 +47,14 @@ public class EmailTeste {
 
 	@Test(expected = IllegalArgumentException.class)
 	public void nao_deve_aceitar_um_endereco_de_email_vazio() {
-		Email email2 = Fixture.from(Email.class).gimme("invalido");
-		Assert.assertNull(email2.getEnderecoEmail());
+		email.setEnderecoEmail("");
+		Assert.assertNull(email.getEnderecoEmail());
 	}
 
-	@Test
+	@Test(expected = IllegalArgumentException.class)
 	public void nao_deve_aceitar_um_endereco_de_email_com_mais_de_1_arroba() {
-		Email email2 = Fixture.from(Email.class).gimme("valido");
-		Assert.assertNull(email2.getEnderecoEmail());
+		email.setEnderecoEmail("vict@r@@hotmail.com");
+		Assert.assertNull(email.getEnderecoEmail());
 	}
 
 	@Test
@@ -64,17 +64,17 @@ public class EmailTeste {
 
 	@Test(expected = IllegalArgumentException.class)
 	public void nao_deve_aceitar_um_email_com_ponto_no_final() {
-		Email email2 = Fixture.from(Email.class).gimme("emailInvalido");
-		Assert.assertNull(email2.getEnderecoEmail());
+		email.setEnderecoEmail("victor@gmail.com.");
+		Assert.assertNull(email.getEnderecoEmail());
 	}
 
-	@Test
+	@Test(expected = IllegalArgumentException.class)
 	public void nao_deve_aceitar_um_email_que_esteja_vazio_antes_do_arroba() {
 		email.setEnderecoEmail("@gmail.com.br");
 		Assert.assertNull(email.getEnderecoEmail());
 	}
 
-	@Test
+	@Test(expected = IllegalArgumentException.class)
 	public void nao_deve_aceitar_um_email_que_esteja_vazio_depois_do_arroba() {
 		email.setEnderecoEmail("jose@");
 		Assert.assertNull(email.getEnderecoEmail());

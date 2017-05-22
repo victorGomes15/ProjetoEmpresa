@@ -45,7 +45,7 @@ public class Telefone {
 	}
 
 	public void setTipo(TelefoneType tipo) {
-		checkArgument(tipo.equals(CELULAR.getDescricao()) || tipo.equals(FIXO.getDescricao()), "Tipo incorreto");
+		checkArgument(tipo.equals(CELULAR) || tipo.equals(FIXO), "Tipo incorreto");
 		this.tipo = tipo;
 	}
 

@@ -1,6 +1,7 @@
 package br.com.contmatic.templates;
 
 import br.com.contmatic.empresa.Endereco;
+import br.com.contmatic.empresa.EnderecoType;
 import br.com.contmatic.empresa.Estado;
 import br.com.six2six.fixturefactory.Fixture;
 import br.com.six2six.fixturefactory.Rule;
@@ -16,6 +17,7 @@ public class EnderecoTemplates implements TemplateLoader {
 				add("numero", random(Integer.class, range(1, 1000)));
 				add("complemento", random(Integer.class, range(0, 100)));
 				add("estado", one(Estado.class, "estValido"));
+				add("tipoEndereco", random(EnderecoType.values()));
 			}
 		});
 	}
