@@ -66,7 +66,8 @@ public class Empresa {
 	 *            the new cnpj
 	 */
 	public void setCnpj(String cnpj) {
-		checkArgument(isNotEmpty(cnpj) && cnpj.matches("\\d{2}.\\d{3}.\\d{3}/\\d{4}-\\d{2}"), "CNPJ incorreto");
+
+		checkArgument(isNotEmpty(cnpj) && cnpj.matches("\\d{14}"), "CNPJ incorreto");
 		this.cnpj = cnpj;
 	}
 
@@ -100,23 +101,6 @@ public class Empresa {
 		return endereco;
 	}
 
-	// public void setEndereco(Set<Endereco> endereco) {
-	// if (endereco != null) {
-	// if (endereco.getNumero() != 0 && endereco.getRua() != null &&
-	// endereco.getEstado() != null) {
-	// this.endereco = endereco;
-	// }
-	// }
-	// }
-
-	// public void setTelefone(Telefone telefone) {
-	// if (telefone.getDdd() > 0 && telefone.getNumero() != null &&
-	// telefone.getTipo() != null) {
-	// this.telefone[tamanhoListaTelefone] = telefone;
-	// this.tamanhoListaTelefone++;
-	// }
-	// }
-
 	/**
 	 * Gets the telefone.
 	 *
@@ -135,7 +119,7 @@ public class Empresa {
 	public void setTelefone(Set<Telefone> telefone) {
 		this.telefone = telefone;
 	}
-	
+
 	public void setEndereco(Set<Endereco> endereco) {
 		this.endereco = endereco;
 	}

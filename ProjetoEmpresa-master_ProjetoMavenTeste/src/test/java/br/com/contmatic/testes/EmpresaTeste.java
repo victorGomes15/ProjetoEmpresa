@@ -53,8 +53,8 @@ public class EmpresaTeste {
 	}
 
 	@Test
-	public void deve_aceitar_um_cnpj_com_14_caracteres() {
-		empresa.setCnpj("12.345.678/9012-34");
+	public void deve_aceitar_um_cnpj_valido_de_14_digitos() {
+		empresa.setCnpj("12345678901234");
 		Assert.assertNotNull(empresa.getCnpj());
 	}
 

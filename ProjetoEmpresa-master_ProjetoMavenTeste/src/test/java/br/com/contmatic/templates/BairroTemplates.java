@@ -5,7 +5,7 @@ import br.com.six2six.fixturefactory.Fixture;
 import br.com.six2six.fixturefactory.Rule;
 import br.com.six2six.fixturefactory.loader.TemplateLoader;
 
-public class BairroTemplates implements TemplateLoader{
+public class BairroTemplates implements TemplateLoader {
 
 	@Override
 	public void load() {
@@ -13,19 +13,10 @@ public class BairroTemplates implements TemplateLoader{
 			{
 				add("codigo", random(Integer.class, range(1, 100)));
 				add("nomeBairro", random("Ibirapuera", "Capão Redondo", "Tatuapé"));
-				add("cep", regex("^\\d{5}-\\d{3}$"));
+				add("cep", regex("\\d{5}-\\d{3}"));
 			}
 		});
 
-		Fixture.of(Bairro.class).addTemplate("bairroInvalido", new Rule() {
-			{
-				add("codigo", random(Integer.class, range(1, 100)));
-				add("nomeBairro", random("Ib", "Ca", "Tat@@@é"));
-				add("cep", regex("^\\d{50}-\\d{3}$"));
-			}
-		});
-		
 	}
 
-	
 }
