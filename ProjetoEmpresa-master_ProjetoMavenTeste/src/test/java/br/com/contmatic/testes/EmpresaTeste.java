@@ -15,9 +15,10 @@ import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
 import br.com.contmatic.empresa.Empresa;
+import br.com.contmatic.empresa.Endereco;
+import br.com.contmatic.empresa.GerenciadorEnderecos;
 import br.com.contmatic.empresa.GerenciadorTelefone;
 import br.com.contmatic.empresa.Telefone;
-import br.com.contmatic.empresa.TelefoneType;
 import br.com.six2six.fixturefactory.Fixture;
 import br.com.six2six.fixturefactory.loader.FixtureFactoryLoader;
 
@@ -25,6 +26,8 @@ import br.com.six2six.fixturefactory.loader.FixtureFactoryLoader;
 public class EmpresaTeste {
 
 	private Empresa empresa;
+	private Telefone telefone;
+	private Endereco endereco;
 
 	@BeforeClass
 	public static void setUpClass() {
@@ -56,6 +59,16 @@ public class EmpresaTeste {
 	}
 
 	@Test
+	public void deve_aceitar_um_endereco_valido() {
+		endereco = Fixture.from(Endereco.class).gimme("enderecoValido");
+		GerenciadorEnderecos gerenEndereco = new GerenciadorEnderecos();
+
+		gerenEndereco.adcEndereco(endereco);
+		empresa.setEndereco(gerenEndereco.getListaEndereco());
+		Assert.assertNotNull(empresa.getEndereco());
+	}
+
+	@Test(expected = IllegalArgumentException.class)
 	public void nao_deve_aceitar_um_cnpj_menor_14_caracteres() {
 		empresa.setCnpj("1234567890123");
 		Assert.assertNull(empresa.getCnpj());
@@ -83,12 +96,6 @@ public class EmpresaTeste {
 	public void nao_deve_aceitar_um_cnpj_com_letras() {
 		empresa.setCnpj("12345678901234l");
 		Assert.assertNull(empresa.getCnpj());
-	}
-
-	@Test
-	public void nao_deve_aceitar_um_endereco_nulo() {
-		// empresa.setEndereco();
-		Assert.assertNull(empresa.getEndereco());
 	}
 
 	@Test(expected = IllegalArgumentException.class)
@@ -153,38 +160,34 @@ public class EmpresaTeste {
 
 	@Test(timeout = 100)
 	public void deve_aceitar_telefone_valido() {
-		Telefone tel = new Telefone();
-		tel.setDdd(11);
-		tel.setNumero("58254952");
-		String tipo = "Fixo";
-		tel.setTipo(TelefoneType.valueOf(tipo));
+		telefone = Fixture.from(Telefone.class).gimme("telefoneValido");
 		GerenciadorTelefone telef = new GerenciadorTelefone();
 
-		telef.addTelefone(tel);
+		telef.addTelefone(telefone);
 
 		empresa.setTelefone(telef.getListaNumeros());
 		Assert.assertNotNull(empresa.getTelefone());
 	}
 
-	@Test
+	@Test(expected = IllegalArgumentException.class)
 	public void nao_deve_aceitar_uma_razaoSocial_nula() {
 		empresa.setRazaoSocial(null);
 		Assert.assertNull(empresa.getRazaoSocial());
 	}
 
-	@Test
+	@Test(expected = IllegalArgumentException.class)
 	public void nao_deve_aceitar_uma_razaoSocial_com_caracteres_especiais() {
 		empresa.setRazaoSocial("luis@");
 		Assert.assertNull(empresa.getRazaoSocial());
 	}
 
-	@Test
+	@Test(expected = IllegalArgumentException.class)
 	public void nao_deve_aceitar_um_nome_de_empresa_nulo() {
 		empresa.setRazaoSocial(null);
 		Assert.assertNull(empresa.getRazaoSocial());
 	}
 
-	@Test
+	@Test(expected = IllegalArgumentException.class)
 	public void nao_deve_aceitar_um_nome_de_empresa_vazia() {
 		empresa.setRazaoSocial("");
 		Assert.assertNull(empresa.getRazaoSocial());

@@ -39,19 +39,19 @@ public class EnderecoTeste {
 		;
 	}
 
-	@Test
+	@Test(expected = IllegalArgumentException.class)
 	public void nao_deve_aceitar_uma_rua_nula() {
 		endereco.setRua(null);
 		Assert.assertNull(endereco.getRua());
 	}
 
-	@Test
+	@Test(expected = IllegalArgumentException.class)
 	public void nao_deve_aceitar_uma_rua_vazia() {
 		endereco.setRua("");
 		Assert.assertNull(endereco.getRua());
 	}
 
-	@Test
+	@Test(expected = IllegalArgumentException.class)
 	public void nao_deve_aceitar_uma_rua_com_menos_de_4_caracteres() {
 		endereco.setRua("cas");
 		Assert.assertNull(endereco.getRua());
@@ -63,7 +63,7 @@ public class EnderecoTeste {
 		Assert.assertEquals("joao 12", endereco.getRua());
 	}
 
-	@Test
+	@Test(expected = IllegalArgumentException.class)
 	public void nao_deve_aceitar_uma_rua_com_caracteres_especiais() {
 		endereco.setRua("J@nathan #");
 		Assert.assertNull(endereco.getRua());
@@ -72,15 +72,13 @@ public class EnderecoTeste {
 	@Test
 	public void deve_aceitar_um_numero_maior_que_0() {
 		endereco.setNumero(1);
-		Assert.assertNotNull(endereco.getNumero());
 	}
 
-	@Test
+	@Test(expected = IllegalArgumentException.class)
 	public void nao_deve_aceitar_um_numero_igual_a_0() {
 		endereco.setNumero(0);
-		Assert.assertNull(endereco.getNumero());
 	}
-	
+
 	@Test
 	public void printObj() {
 		System.out.println(endereco);
@@ -88,14 +86,12 @@ public class EnderecoTeste {
 
 	@Test
 	public void deve_aceitar_um_complemento_maior_igual_a_0() {
-		endereco.setComplemento(0);
-		Assert.assertNull(endereco.getNumero());
+		endereco.setComplemento(40);
 	}
 
-	@Test
+	@Test(expected = IllegalArgumentException.class)
 	public void nao_deve_aceitar_um_complemento_menor_que_0() {
 		endereco.setComplemento(-1);
-		Assert.assertNull(endereco.getNumero());
 	}
 
 }

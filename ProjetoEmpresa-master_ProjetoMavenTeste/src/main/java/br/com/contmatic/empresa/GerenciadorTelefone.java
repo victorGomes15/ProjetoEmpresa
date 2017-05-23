@@ -10,17 +10,17 @@ public class GerenciadorTelefone {
 	private Set<Telefone> listaNumeros = new HashSet<>();
 
 	public void addTelefone(Telefone telefone) {
-		Preconditions.checkArgument(verificarSeIgual(telefone), "Tipo do telefone já existente");
+		Preconditions.checkArgument(verificarTipoSeExiste(telefone), "Telefone já existente");
 		listaNumeros.add(telefone);
 	}
 
-	private boolean verificarSeIgual(Telefone telefone) {
+	private boolean verificarTipoSeExiste(Telefone telefone) {
 		for (Telefone tele : listaNumeros) {
 			if (tele.getTipo().getDescricao().equals(telefone.getTipo().getDescricao())) {
-				return true;
+				return false;
 			}
 		}
-		return false;
+		return true;
 	}
 
 	public Set<Telefone> getListaNumeros() {

@@ -15,6 +15,7 @@ import br.com.six2six.fixturefactory.loader.FixtureFactoryLoader;
 public class CidadeTeste {
 
 	private Cidade cidade;
+	private Bairro bairro;
 
 	@BeforeClass
 	public static void setUpClass() {
@@ -72,18 +73,15 @@ public class CidadeTeste {
 
 	@Test
 	public void deve_aceitar_um_bairro_valido() {
-		Cidade cid = Fixture.from(Cidade.class).gimme("cidadeValida");
-
-		Assert.assertNotNull(cid.getBairro());
+		Assert.assertNotNull(cidade.getBairro());
 	}
 
 	@Test(expected = IllegalArgumentException.class)
 	public void nao_deve_aceitar_um_bairro_invalido() {
-		Bairro bairro = new Bairro();
+		bairro = Fixture.from(Bairro.class).gimme("bairroValido");
 		bairro.setCodigo(0);
 		bairro.setNomeBairro("sp");
 		cidade.setBairro(bairro);
-		Assert.assertNull(cidade.getBairro());
 	}
 
 }

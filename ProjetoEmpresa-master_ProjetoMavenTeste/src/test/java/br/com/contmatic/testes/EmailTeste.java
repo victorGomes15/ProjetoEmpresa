@@ -38,7 +38,7 @@ public class EmailTeste {
 		System.out.println("Fim de teste");
 	}
 
-	@Test
+	@Test(expected = IllegalArgumentException.class)
 	public void nao_deve_aceitar_um_endereco_de_email_nulo() {
 		email.setEnderecoEmail(null);
 		System.out.println(email.getEnderecoEmail());

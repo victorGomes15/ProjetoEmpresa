@@ -18,16 +18,16 @@ public class Endereco {
 
 	/** The rua. */
 	private String rua;
-	
+
 	/** The numero. */
 	private Integer numero;
-	
+
 	/** The complemento. */
 	private Integer complemento;
-	
+
 	/** The estado. */
 	private Estado estado;
-	
+
 	/** The tipo endereco. */
 	private EnderecoType tipoEndereco;
 
@@ -43,11 +43,12 @@ public class Endereco {
 	/**
 	 * Sets the rua.
 	 *
-	 * @param rua the new rua
+	 * @param rua
+	 *            the new rua
 	 */
 	public void setRua(String rua) {
-		checkArgument(isNotEmpty(rua) && rua.length() >= 4);
-		checkArgument(rua.matches("[a-zA-Z\\+\\s_\\d]+"));
+		checkArgument(isNotEmpty(rua) && rua.length() >= 4, "Rua não pode ser vazia e maior que 3 caracteres");
+		checkArgument(rua.matches("[a-zA-Z\\+\\s_\\d]+"), "Rua não pode conter caracteres especiais");
 		this.rua = rua;
 	}
 
@@ -63,12 +64,12 @@ public class Endereco {
 	/**
 	 * Sets the numero.
 	 *
-	 * @param numero the new numero
+	 * @param numero
+	 *            the new numero
 	 */
 	public void setNumero(Integer numero) {
-		if (numero > 0) {
-			this.numero = numero;
-		}
+		checkArgument(numero > 0, "Número deve ser maior que 0");
+		this.numero = numero;
 	}
 
 	/**
@@ -83,7 +84,8 @@ public class Endereco {
 	/**
 	 * Sets the tipo endereco.
 	 *
-	 * @param tipoEndereco the new tipo endereco
+	 * @param tipoEndereco
+	 *            the new tipo endereco
 	 */
 	public void setTipoEndereco(EnderecoType tipoEndereco) {
 		checkArgument(tipoEndereco.equals(EnderecoType.COMERCIAL.getDescricao())
@@ -103,12 +105,12 @@ public class Endereco {
 	/**
 	 * Sets the complemento.
 	 *
-	 * @param complemento the new complemento
+	 * @param complemento
+	 *            the new complemento
 	 */
 	public void setComplemento(Integer complemento) {
-		if (complemento >= 0) {
-			this.complemento = complemento;
-		}
+		checkArgument(complemento >= 0, "Complemento não pode ser menor que 0");
+		this.complemento = complemento;
 	}
 
 	/**
@@ -123,13 +125,16 @@ public class Endereco {
 	/**
 	 * Sets the estado.
 	 *
-	 * @param estado the new estado
+	 * @param estado
+	 *            the new estado
 	 */
 	public void setEstado(Estado estado) {
 		this.estado = estado;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
@@ -138,7 +143,9 @@ public class Endereco {
 
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#hashCode()
 	 */
 	@Override
@@ -147,7 +154,9 @@ public class Endereco {
 				.hashCode();
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
 	@Override

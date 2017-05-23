@@ -7,7 +7,6 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import br.com.contmatic.empresa.Bairro;
 import br.com.contmatic.empresa.Cidade;
 import br.com.contmatic.empresa.Estado;
 import br.com.six2six.fixturefactory.Fixture;
@@ -16,6 +15,7 @@ import br.com.six2six.fixturefactory.loader.FixtureFactoryLoader;
 public class EstadoTeste {
 
 	private Estado estado;
+	private Cidade cidade;
 
 	@BeforeClass
 	public static void setUpClass() {
@@ -83,26 +83,18 @@ public class EstadoTeste {
 
 	@Test(expected = IllegalArgumentException.class)
 	public void nao_deve_aceitar_uma_cidade_invalida() {
-		Cidade cidade = new Cidade();
+		cidade = Fixture.from(Cidade.class).gimme("cidadeValida");
 		cidade.setCodigo(-1);
 		cidade.setNome(null);
-		Bairro bairro = new Bairro();
-		bairro.setCodigo(1);
-		bairro.setNomeBairro("");
-		cidade.setBairro(bairro);
 		estado.setCidade(cidade);
-		Assert.assertNull(estado.getCidade());
 	}
 
 	@Test
 	public void deve_aceitar_uma_cidade_valida() {
-		Cidade cidade = new Cidade();
+		cidade = Fixture.from(Cidade.class).gimme("cidadeValida");
 		cidade.setCodigo(1);
 		cidade.setNome("sao Paulo");
-		Bairro bairro = new Bairro();
-		bairro.setCodigo(1);
-		bairro.setNomeBairro("Jardim Ibirapuera");
-		cidade.setBairro(bairro);
+
 		estado.setCidade(cidade);
 
 		Assert.assertNotNull(estado.getCidade());

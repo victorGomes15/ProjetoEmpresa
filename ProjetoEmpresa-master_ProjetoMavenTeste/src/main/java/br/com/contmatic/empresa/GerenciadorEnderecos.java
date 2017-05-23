@@ -17,9 +17,14 @@ public class GerenciadorEnderecos {
 	private boolean verificarTipoEndereco(Endereco endereco) {
 		for (Endereco endere : listaEndereco) {
 			if (endere.getTipoEndereco().equals(endereco)) {
-				return true;
+				return false;
 			}
 		}
-		return false;
+		return true;
 	}
+
+	public Set<Endereco> getListaEndereco() {
+		return listaEndereco;
+	}
+
 }

@@ -68,7 +68,8 @@ public class Telefone {
 
 	@Override
 	public String toString() {
-		return ToStringBuilder.reflectionToString(this, new MultilineRecursiveToStringStyle());
+		new MultilineRecursiveToStringStyle();
+		return ToStringBuilder.reflectionToString(this, MultilineRecursiveToStringStyle.SHORT_PREFIX_STYLE);
 
 	}
 }

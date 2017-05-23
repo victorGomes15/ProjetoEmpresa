@@ -38,16 +38,14 @@ public class BairroTeste {
 		System.out.println("Fim de teste");
 	}
 
-	@Test
+	@Test(expected = IllegalArgumentException.class)
 	public void nao_deve_aceitar_um_codigo_igual_0() {
-
 		bairro.setCodigo(0);
 	}
 
 	@Test(expected = IllegalArgumentException.class)
 	public void nao_deve_aceitar_um_codigo_negativo() {
 		bairro.setCodigo(-1);
-		Assert.assertEquals(null, bairro.getCodigo());
 	}
 
 	@Test
@@ -65,13 +63,11 @@ public class BairroTeste {
 	@Test(expected = IllegalArgumentException.class)
 	public void nao_deve_aceitar_um_bairro_vazio() {
 		bairro.setNomeBairro("");
-		Assert.assertNull(bairro.getNomeBairro());
 	}
 
 	@Test(expected = IllegalArgumentException.class)
 	public void nao_deve_aceitar_um_bairro_menor_que_4_caracteres() {
 		bairro.setNomeBairro("123");
-		Assert.assertNull(bairro.getNomeBairro());
 	}
 
 	@Test

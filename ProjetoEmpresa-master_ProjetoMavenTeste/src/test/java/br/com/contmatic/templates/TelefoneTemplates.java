@@ -14,7 +14,7 @@ public class TelefoneTemplates implements TemplateLoader {
 			{
 				add("ddd", random(Integer.class, range(11, 99)));
 				add("tipo", random(TelefoneType.values()));
-				add("numero", regex("\\d{8}"));
+				add("numero", regex("\\d{8,9}"));
 			}
 		});
 	}

@@ -16,10 +16,10 @@ public class Cidade {
 
 	/** The codigo. */
 	private Integer codigo;
-	
+
 	/** The nome. */
 	private String nome;
-	
+
 	/** The bairro. */
 	private Bairro bairro;
 
@@ -41,7 +41,8 @@ public class Cidade {
 	/**
 	 * Sets the codigo.
 	 *
-	 * @param codigo the new codigo
+	 * @param codigo
+	 *            the new codigo
 	 */
 	public void setCodigo(Integer codigo) {
 		checkArgument(codigo > 0, "Código deve ser maior que 0");
@@ -60,7 +61,8 @@ public class Cidade {
 	/**
 	 * Sets the nome.
 	 *
-	 * @param nome the new nome
+	 * @param nome
+	 *            the new nome
 	 */
 	public void setNome(String nome) {
 		checkArgument(isNotEmpty(nome) && nome.length() > 2, "Nome da cidade invalido");
@@ -79,7 +81,8 @@ public class Cidade {
 	/**
 	 * Sets the bairro.
 	 *
-	 * @param bairro the new bairro
+	 * @param bairro
+	 *            the new bairro
 	 */
 	public void setBairro(Bairro bairro) {
 		checkArgument(bairro != null, "Bairro nulo");
@@ -88,7 +91,9 @@ public class Cidade {
 		this.bairro = bairro;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
 	@Override
@@ -101,7 +106,9 @@ public class Cidade {
 		return new EqualsBuilder().append(this.codigo, other.codigo).isEquals();
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#hashCode()
 	 */
 	@Override
@@ -109,7 +116,9 @@ public class Cidade {
 		return new HashCodeBuilder().append(this.codigo).toHashCode();
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
